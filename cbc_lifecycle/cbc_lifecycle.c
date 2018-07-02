@@ -84,9 +84,9 @@ char valid_map[S_MAX][S_MAX] = {
 	{ 0, 0, 1, 1, 1, 1, 1, 1 }, /* shutdown can go upper states */
 	{ 0, 0, 0, 1, 1, 1, 1, 1 }, /* delay can go upper states */
 	{ 0, 0, 0, 0, 1, 1, 0, 0 }, /* acrnd shutdown can go ioc_shutdown */
-	{ 0, 1, 0, 0, 0, 1, 0, 0 }, /* ioc_shutdown can go alive (s3 case) */
+	{ 1, 0, 0, 0, 0, 1, 0, 0 }, /* ioc_shutdown can go default (s3 case) */
 	{ 0, 0, 0, 0, 0, 1, 1, 0 }, /* acrnd_reboot can only go ioc_shutdown */
-	{ 0, 1, 0, 0, 0, 1, 0, 1 }, /* acrnd_suspend can go alive/ioc_shutdown */
+	{ 0, 0, 0, 0, 0, 1, 0, 1 }, /* acrnd_suspend can go ioc_shutdown */
 };
 
 const char *state_name[] = {
@@ -296,6 +296,7 @@ void *cbc_heartbeat_loop(void)
 				system("reboot");
 			else if (last_state == S_ACRND_SUSPEND)
 				system("echo mem > /sys/power/state");
+			cur_state = state_transit(S_DEFAULT);// for s3 case
 			//no heartbeat sent from now
 			heartbeat = NULL;
 			break;
