@@ -1,11 +1,14 @@
 T := $(CURDIR)
+OUT_DIR ?= $(CURDIR)/build
 
 .PHONY: all cbc_lifecycle cbc_attach
 all: cbc_lifecycle cbc_attach
 
 cbc_lifecycle:
+	mkdir -p $(OUT_DIR)
 	make -C $(T)/cbc_lifecycle OUT_DIR=$(OUT_DIR)
 cbc_attach:
+	mkdir -p $(OUT_DIR)
 	make -C $(T)/cbc_attach OUT_DIR=$(OUT_DIR)
 
 .PHONY: clean

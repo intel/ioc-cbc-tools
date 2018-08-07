@@ -58,7 +58,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <linux/tty.h>
-#include "../../tools/acrn-manager/acrn_mngr.h"
+#include <acrn/acrn_mngr.h>
 
 static char cbcd_name[] = "sos-lcs";
 static char acrnd_name[] = "acrnd";
