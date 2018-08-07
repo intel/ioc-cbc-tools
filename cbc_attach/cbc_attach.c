@@ -43,6 +43,7 @@
 #define VERSION_STRING xstr(VERSION_MAJOR) xstr(VERSION_MINOR) xstr(VERSION_REVISON)
 
 char const *const cDEFAULT_DEVICE_NAME = "/dev/ttyS1";
+char const *const cDEFAULT_MATCH_CONF = "/usr/share/ioc-cbc-tools/cbc_match.txt";
 
 static struct option longOpts[] = {
 	{"help", no_argument, 0, 'h'},
@@ -328,6 +329,30 @@ bool init(int *const deviceFd,
 	return success;
 }
 
+static const char *match_deviceName(const char *dfl)
+{
+	FILE * file = fopen(cDEFAULT_MATCH_CONF, "rb");
+	char line[256];
+	char device[256];
+	static char tty[256];
+
+	if (!file)
+		goto no_match_file;
+	while (1) {
+		if (!fgets(line, 255, file))
+			goto no_match;
+		if (sscanf(line, "%s | %s", device, tty) != 2)
+			goto no_match;
+		if (!access(device, F_OK))
+			break;
+	}
+	fclose(file);
+	return tty;
+no_match:
+	fclose(file);
+no_match_file:
+	return dfl;
+}
 
 int main(int argc, char **argv)
 {
@@ -387,6 +412,9 @@ int main(int argc, char **argv)
 
 	if (optind < argc)
 		deviceName = argv[optind];
+
+	/* give the platform a choice to auto match the tty device */
+	deviceName = match_deviceName(deviceName);
 
 	printf("%s " APP_INFO " Started (pid: %i, CBC device: %s,", argv[0],
 					getpid(), deviceName);
