@@ -37,8 +37,10 @@
 #define VERSION_MAJOR 4
 #define VERSION_MINOR 2
 #define VERSION_REVISON 2
+#define xstr(s) str(s)
+#define str(s) #s
 
-#define VERSION_STRING "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_REVISION}"
+#define VERSION_STRING xstr(VERSION_MAJOR) xstr(VERSION_MINOR) xstr(VERSION_REVISON)
 
 char const *const cDEFAULT_DEVICE_NAME = "/dev/ttyS1";
 
@@ -386,7 +388,7 @@ int main(int argc, char **argv)
 	if (optind < argc)
 		deviceName = argv[optind];
 
-	printf("%s " APP_INFO "Started (pid: %i, CBC device: %s,", argv[0],
+	printf("%s " APP_INFO " Started (pid: %i, CBC device: %s,", argv[0],
 					getpid(), deviceName);
 	printf("baudrate: %i, hw flow control: %s)\n", baudrate,
 					useHwFlowControl ? "on" : "off");
