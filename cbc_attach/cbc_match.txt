@@ -1,1 +1,1 @@
-/sys/devices/pci0000:00/0000:00:18.1/dw-apb-uart.9/tty/ttyS2 | /dev/ttyS2
+/sys/devices/pci0000:00/0000:00:18.1/dw-apb-uart.9/tty/ttyS2 | /dev/ttyS2 | acrn

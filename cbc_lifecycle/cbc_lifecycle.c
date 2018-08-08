@@ -63,6 +63,7 @@
 static char cbcd_name[] = "sos-lcs";
 static char acrnd_name[] = "acrnd";
 static char cbc_lifecycle_dev[] = "/dev/cbc-lifecycle";
+static char cbc_match_file[] = "/usr/share/ioc-cbc-tools/cbc_match.txt";
 
 typedef enum {
 	S_DEFAULT = 0,	     /* default, not receiving any status */
@@ -457,9 +458,62 @@ static int send_acrnd_stop(void)
 	return ret;
 }
 
+/* for non vm manager (acrnd) case, we handle the stop request by ourselves */
+static void handle_stop(struct mngr_msg *msg, int client_fd, void *param)
+{
+	struct mngr_msg *req = (void *)msg;
+	struct mngr_msg ack;
+	static struct mngr_msg req_p = {
+		.msgid = SHUTDOWN,
+		.magic = MNGR_MSG_MAGIC,
+	};
+
+	memcpy(&ack, req, sizeof(*req));
+	ack.data.err = 0;
+	mngr_send_msg(client_fd, &ack, NULL, 0);
+	int lcs_fd = mngr_open_un(cbcd_name, MNGR_CLIENT);
+	if (lcs_fd < 0) {
+		fprintf(stderr, "cannot open sos-lcs.socket\n");
+		return;
+	}
+	mngr_send_msg(lcs_fd, &req_p, NULL, 0);
+	mngr_close(lcs_fd);
+}
+
+/* return 1 if config file specify "acrnd" exists */
+static int check_acrnd(void)
+{
+	FILE * file = fopen(cbc_match_file, "rb");
+	char line[256];
+	char device[256];
+	char tty[256];
+	char acrn[256];
+	int is_acrn = 0;
+
+	if (!file)
+		goto no_match_file;
+	while (1) {
+		if (!fgets(line, 255, file))
+			goto no_match;
+		if (sscanf(line, "%s | %s | %s", device, tty, acrn) != 3)
+			goto no_match;
+		if (!access(device, F_OK))
+			break;
+	}
+	fclose(file);
+	is_acrn = !strncmp(acrn, "acrn", 4);
+	return is_acrn;
+no_match:
+	fclose(file);
+no_match_file:
+	return is_acrn;
+}
+
 int main(void)
 {
 	cbc_thread_t wakeup_reason_thread_ptr;
+	int is_acrn = check_acrnd();
+	int v_fd;
 
 	cbc_lifecycle_fd = open_cbc_device(cbc_lifecycle_dev);
 	if (cbc_lifecycle_fd < 0)
@@ -472,6 +526,14 @@ int main(void)
 		fprintf(stderr, "cannot open %s socket\n", cbcd_name);
 		goto err_un;
 	}
+	if (!is_acrn) {
+		v_fd = mngr_open_un(acrnd_name, MNGR_SERVER);
+		if (v_fd < 0) {
+			fprintf(stderr, "cannot open %s socket\n", acrnd_name);
+			goto err_un;
+		}
+		mngr_add_handler(v_fd, ACRND_STOP, handle_stop, NULL);
+	}
 	cbc_thread_create(&wakeup_reason_thread_ptr, cbc_wakeup_reason_thread,
 			NULL);  // thread to handle wakeup_reason Rx data
 
@@ -483,6 +545,8 @@ int main(void)
 	cbc_heartbeat_loop();
 	// shouldn't be here
 	mngr_close(cbcd_fd);
+	if (!is_acrn)
+		mngr_close(v_fd);
 err_un:
 	close_cbc_device(cbc_lifecycle_fd);
 err_cbc:
