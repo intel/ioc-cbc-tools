@@ -3,9 +3,9 @@ Description=CBC lifecycle service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/cbc_lifecycle
+ExecStart=/usr/bin/u_cbc_lifecycle
 Restart=no
-ExecStop=/usr/bin/killall -s TERM cbc_lifecycle
+ExecStop=/usr/bin/killall -s TERM u_cbc_lifecycle
 
 [Install]
 WantedBy=multi-user.target
