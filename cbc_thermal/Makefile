@@ -10,9 +10,10 @@ $(OUT_DIR)/cbc_thermal: cbc_thermal.c
 clean:
 	rm $(OUT_DIR)/cbc_thermal
 
-install: $(OUT_DIR)/cbc_thermal cbc_thermald.service thermal-conf.xml
+install: $(OUT_DIR)/cbc_thermal cbc_thermal_chart.py cbc_thermald.service thermal-conf.xml
 	install -d $(DESTDIR)/usr/bin
 	install -t $(DESTDIR)/usr/bin $<
+	install -t $(DESTDIR)/usr/bin cbc_thermal_chart.py
 	install -d $(DESTDIR)/usr/lib/systemd/system/
 	install -d $(DESTDIR)/usr/share/ioc-cbc-tools/
 	install -p -m 0644 cbc_thermald.service $(DESTDIR)/usr/lib/systemd/system/
