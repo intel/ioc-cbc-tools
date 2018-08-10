@@ -5,7 +5,7 @@ After=sysinit.target local.target
 Before=basic.target
 
 [Service]
-ExecStart=/usr/bin/u_cbc_attach
+ExecStart=/usr/bin/cbc_attach
 Restart=no
 Type=simple
 
