@@ -312,6 +312,7 @@ void *cbc_heartbeat_loop(void)
 	return NULL;
 }
 
+static int force_s5;
 void *cbc_wakeup_reason_thread(void *arg)
 {
 	wakeup_reason_frame data;
@@ -325,12 +326,15 @@ void *cbc_wakeup_reason_thread(void *arg)
 				continue;
 			}
 			wakeup_reason = data.wakeup[0] | data.wakeup[1] << 8 | data.wakeup[2] << 16;
-			if (!wakeup_reason)
+			if (!wakeup_reason) {
 				state_transit(S_IOC_SHUTDOWN);
-			else if (!(wakeup_reason & ~(1 << 23)))
+			} else if (!(wakeup_reason & ~(3 << 22))) {
 				state_transit(S_SHUTDOWN);
-			else
+				// bit 22 is used by UOC ioc mediator to indicate a S5 is preferred
+				force_s5 = wakeup_reason & (1 << 22);
+			} else {
 				state_transit(S_ALIVE);
+			}
 		}
 	}
 	return NULL;
@@ -465,7 +469,6 @@ static void handle_stop(struct mngr_msg *msg, int client_fd, void *param)
 	struct mngr_msg *req = (void *)msg;
 	struct mngr_msg ack;
 	static struct mngr_msg req_p = {
-		.msgid = SHUTDOWN,
 		.magic = MNGR_MSG_MAGIC,
 	};
 
@@ -477,6 +480,10 @@ static void handle_stop(struct mngr_msg *msg, int client_fd, void *param)
 		fprintf(stderr, "cannot open sos-lcs.socket\n");
 		return;
 	}
+	if (force_s5)
+		req_p.msgid = SHUTDOWN;
+	else
+		req_p.msgid = SUSPEND;
 	mngr_send_msg(lcs_fd, &req_p, NULL, 0);
 	mngr_close(lcs_fd);
 }
