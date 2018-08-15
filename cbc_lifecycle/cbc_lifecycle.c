@@ -51,6 +51,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <semaphore.h>
 #include <termios.h>
 #include <fcntl.h>
 #include <time.h>
@@ -102,6 +103,7 @@ const char *state_name[] = {
 
 static state_machine_t state;
 static pthread_mutex_t state_mutex = PTHREAD_MUTEX_INITIALIZER;
+static sem_t event_sema;
 
 typedef struct {
 	uint8_t header;
@@ -254,6 +256,7 @@ static int send_acrnd_start(void);
 
 void *cbc_heartbeat_loop(void)
 {
+	struct timespec ts;
 	state_machine_t last_state = S_DEFAULT;
 	const int p_size = sizeof(cbc_heartbeat_init);
 	cbc_send_data(cbc_lifecycle_fd, cbc_heartbeat_init, p_size);
@@ -314,8 +317,10 @@ void *cbc_heartbeat_loop(void)
 			fprintf(stderr, ".");
 		}
 		last_state = cur_state;
+		clock_gettime(CLOCK_REALTIME, &ts);
 		/* delay 1 second to send next heart beat */
-		sleep(1);
+		ts.tv_sec += 1;
+		sem_timedwait(&event_sema, &ts);
 	}
 	return NULL;
 }
@@ -336,6 +341,7 @@ void *cbc_wakeup_reason_thread(void *arg)
 			wakeup_reason = data.wakeup[0] | data.wakeup[1] << 8 | data.wakeup[2] << 16;
 			if (!wakeup_reason) {
 				state_transit(S_IOC_SHUTDOWN);
+				sem_post(&event_sema);
 			} else if (!(wakeup_reason & ~(3 << 22))) {
 				state_transit(S_SHUTDOWN);
 				// bit 22 is used by UOC ioc mediator to indicate a S5 is preferred
@@ -361,6 +367,7 @@ static void handle_shutdown(struct mngr_msg *msg, int client_fd, void *param)
 
 	fprintf(stderr, "acrnd agreed to shutdown\n");
 	state_transit(S_ACRND_SHUTDOWN);
+	sem_post(&event_sema);
 	mngr_send_msg(client_fd, &ack, NULL, 0);
 }
 
@@ -374,6 +381,7 @@ static void handle_suspend(struct mngr_msg *msg, int client_fd, void *param)
 	ack.data.err = 0;
 
 	state_transit(S_ACRND_SUSPEND);
+	sem_post(&event_sema);
 	mngr_send_msg(client_fd, &ack, NULL, 0);
 }
 
@@ -388,6 +396,7 @@ static void handle_reboot(struct mngr_msg *msg, int client_fd, void *param)
 	ack.data.err = 0;
 
 	state_transit(S_ACRND_REBOOT);
+	sem_post(&event_sema);
 	mngr_send_msg(client_fd, &ack, NULL, 0);
 }
 
@@ -588,6 +597,7 @@ int main(void)
 	int is_acrn = check_acrnd();
 	int v_fd;
 
+	sem_init(&event_sema, 0, 0);
 	cbc_lifecycle_fd = open_cbc_device(cbc_lifecycle_dev);
 	if (cbc_lifecycle_fd < 0)
 		goto err_cbc;
