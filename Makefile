@@ -16,9 +16,9 @@ cbc_attach:
 
 .PHONY: clean
 clean:
-	make -C $(T)/cbc_lifecycle clean
-	make -C $(T)/cbc_attach clean
-	make -C $(T)/cbc_thermal clean
+	make -C $(T)/cbc_lifecycle clean OUT_DIR=$(OUT_DIR)
+	make -C $(T)/cbc_attach clean OUT_DIR=$(OUT_DIR)
+	make -C $(T)/cbc_thermal clean OUT_DIR=$(OUT_DIR)
 	rm -rf $(OUT_DIR)
 
 .PHONY: install
