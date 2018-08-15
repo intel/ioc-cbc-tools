@@ -127,6 +127,8 @@ static char cbc_heartbeat_s3[] =		{0x02, 0x00, 0x07, 0x00};
 static char cbc_heartbeat_active[] =		{0x02, 0x01, 0x00, 0x00};
 static char cbc_heartbeat_shutdown_delay[] =	{0x02, 0x02, 0x00, 0x00};
 static char cbc_heartbeat_init[] = 		{0x02, 0x03, 0x00, 0x00};
+static char cbc_heartbeat_rtc[] =		{0x05, 0x00, 0x00, 0x00};
+static int cbc_rtc_set;
 
 static int cbc_lifecycle_fd = -1;
 
@@ -290,12 +292,18 @@ void *cbc_heartbeat_loop(void)
 			heartbeat = cbc_heartbeat_s3;
 			break;
 		case S_IOC_SHUTDOWN:
-			if (last_state == S_ACRND_SHUTDOWN)
+			if (last_state == S_ACRND_SHUTDOWN) {
 				system("shutdown 0");
-			else if (last_state == S_ACRND_REBOOT)
+			} else if (last_state == S_ACRND_REBOOT) {
 				system("reboot");
-			else if (last_state == S_ACRND_SUSPEND)
+			} else if (last_state == S_ACRND_SUSPEND) {
+				if (cbc_rtc_set) {
+					cbc_send_data(cbc_lifecycle_fd,
+						cbc_heartbeat_rtc, p_size);
+					cbc_rtc_set = 0;
+				}
 				system("echo mem > /sys/power/state");
+			}
 			cur_state = state_transit(S_DEFAULT);// for s3 case
 			//no heartbeat sent from now
 			heartbeat = NULL;
@@ -395,20 +403,77 @@ static void handle_wakeup_reason(struct mngr_msg *msg, int client_fd, void *para
 	mngr_send_msg(client_fd, &ack, NULL, 0);
 }
 
+static int cbc_timer_format(int *_delta, int *gran)
+{
+	int delta = *_delta;
+
+	if (delta < 1) {
+		fprintf(stderr, "timer as %d second(s), cannot support.\n", delta);
+		return -1;
+	}
+	*gran = 0;
+	if (delta > 0xFFFF) {
+		delta /= 60;
+		*gran = 1;
+		goto minute;
+	}
+	goto done;
+minute:
+	if (delta > 0xFFFF) {
+		delta /= 60;
+		*gran = 2;
+		goto hour;
+	}
+	goto done;
+hour:
+	if (delta > 0xFFFF) {
+		delta /= 24;
+		*gran = 3;
+		goto day;
+	}
+	goto done;
+day:
+	if (delta > 0xFFFF) {
+		delta /= 7;
+		*gran = 4;
+		goto week;
+	}
+	goto done;
+week:
+	if (delta > 0xFFFF) {
+		fprintf(stderr, "timer as %d weeks, cannot support.\n", delta);
+		return -1;
+	}
+done:
+	*_delta = delta;
+	return 0;
+}
+
 static void handle_rtc(struct mngr_msg *msg, int client_fd, void *param)
 {
 	struct mngr_msg ack;
+	time_t now;
+	int delta;
+	int gran;
 
 	ack.magic = MNGR_MSG_MAGIC;
 	ack.msgid = msg->msgid;
 	ack.timestamp = msg->timestamp;
 
-	fprintf(stderr, "%s request rtc timer at %lu, result will be %d\n",
-			msg->data.rtc_timer.vmname, msg->data.rtc_timer.t,
-			ack.data.err);
-	/* Need wait IOC firmware to support RTC */
-	ack.data.err = -1;
+	now = time(NULL);
+	delta = msg->data.rtc_timer.t - now;
+	if (cbc_timer_format(&delta, &gran) < 0) {
+		ack.data.err = -1;
+	} else {
+		ack.data.err = 0;
 
+		fprintf(stderr, "%s request rtc timer at %lu\n",
+			msg->data.rtc_timer.vmname, msg->data.rtc_timer.t);
+		cbc_heartbeat_rtc[1] = delta & 0xFF;
+		cbc_heartbeat_rtc[2] = (delta & 0xFF00) >> 8;
+		cbc_heartbeat_rtc[3] = gran & 0xF;
+		cbc_rtc_set = 1;
+	}
 	mngr_send_msg(client_fd, &ack, NULL, 0);
 }
 
