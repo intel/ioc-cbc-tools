@@ -591,6 +591,13 @@ no_match_file:
 	return is_acrn;
 }
 
+static void sigterm_suppress(int sig)
+{
+	cbc_send_data(cbc_lifecycle_fd, cbc_suppress_heartbeat_30min,
+			sizeof(cbc_suppress_heartbeat_30min));
+	exit(0);
+}
+
 int main(void)
 {
 	cbc_thread_t wakeup_reason_thread_ptr;
@@ -604,6 +611,9 @@ int main(void)
 	/* the handle_* function may reply on a close fd, since the client
 	 * can close the client_fd and ignore the ack */
 	signal(SIGPIPE, SIG_IGN);
+	/* if the service is to be killed by SIGTERM, we want cbc send
+	 * heartbeat suppress */
+	signal(SIGTERM, sigterm_suppress);
 	cbcd_fd = mngr_open_un(cbcd_name, MNGR_SERVER);
 	if (cbcd_fd < 0) {
 		fprintf(stderr, "cannot open %s socket\n", cbcd_name);
