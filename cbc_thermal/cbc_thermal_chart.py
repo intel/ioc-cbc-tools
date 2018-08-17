@@ -10,6 +10,7 @@ import pprint
 import sys
 import os
 import argparse
+import datetime
 import time
 import re
 import xml.etree.ElementTree as etree
@@ -385,6 +386,8 @@ def csv_to_svg(file_csv, file_svg, comments):
 
 def main(args):
 #    pp.pprint(args)
+    date_now = datetime.datetime.now()
+    date_now_str = "{0}{1}{2}-{3}{4}".format(date_now.year, date_now.month, date_now.day, date_now.hour, date_now.minute)
     scan_sensors()
     scan_cdevs(args.cpu_all)
     scan_rapl()
@@ -396,11 +399,11 @@ def main(args):
    # pp.pprint(thermal_rapl_max_val)
 
     sample_start_ts = time.time()
-    with open("{0}/cbc_thermal_chart.csv".format(args.output_dir), 'w') as file_csv:
+    with open("{0}/cbc_thermal_chart-{1}.csv".format(args.output_dir, date_now_str), 'w') as file_csv:
         record_to_csv(file_csv, args.time, args.interval, args.cpu_all)
 
-    with open("{0}/cbc_thermal_chart.csv".format(args.output_dir), 'r') as file_csv:
-        with open("{0}/cbc_thermal_chart.svg".format(args.output_dir), 'w') as file_svg:
+    with open("{0}/cbc_thermal_chart-{1}.csv".format(args.output_dir, date_now_str), 'r') as file_csv:
+        with open("{0}/cbc_thermal_chart-{1}.svg".format(args.output_dir, date_now_str), 'w') as file_svg:
             csv_to_svg(file_csv, file_svg, ["sample start: {0}".format(sample_start_ts), "sample interval: {0} sec".format(args.interval), "sample duration: {0} sec".format(args.time)])
 
 def parse_arguments(argv):
