@@ -18,6 +18,9 @@ import mmap
 
 thermal_sensors = []
 thermal_cdevs = []
+thermal_rapls_pl = []
+thermal_rapls_uw = []
+thermal_rapl_max_val = 0
 
 def scan_thremald_config(config, product):
     global thermal_sensors
@@ -74,6 +77,36 @@ def scan_cdevs(all_cpu):
         except:
             pass
 
+def scan_rapl():
+    global thermal_rapl_max_val
+    rapl_dirs = os.listdir("/sys/class/powercap")
+    rapl_dirs.sort()
+    for rd in rapl_dirs[1:]:
+        try:
+            with open("/sys/class/powercap/{0}/name".format(rd)) as f_name:
+                name = f_name.read().rstrip()
+                uw = {}
+                uw["ts"] = time.time()
+                uw["type"] = "{0}:{1}:energy_uw".format(rd, name)
+                uw["path"] = "/sys/class/powercap/{0}/energy_uj".format(rd)
+                uw["uj"] = int(open(uw["path"]).read().rstrip())
+                thermal_rapls_uw.append(uw)
+                try:
+                    for i in range(99):
+                        with open("/sys/class/powercap/{0}/constraint_{1}_name".format(rd, i)) as f_c_name:
+                            pl = {}
+                            pl["type"] = "{0}:{1}:{2}".format(rd, name, f_c_name.read().rstrip())
+                            pl["path"] = "/sys/class/powercap/{0}/constraint_{1}_power_limit_uw".format(rd, i)
+                            tmp = open(pl["path"]).read()
+                            max_val = int(open("/sys/class/powercap/{0}/constraint_{1}_max_power_uw".format(rd, i)).read().rstrip())
+                            if max_val > thermal_rapl_max_val:
+                                thermal_rapl_max_val = max_val
+                            thermal_rapls_pl.append(pl)
+                except Exception as ex:
+                    pass
+        except Exception as ex:
+            pass
+
 def gen_svg_header(width, height):
     header0 = """<?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -86,6 +119,7 @@ def gen_svg_header(width, height):
       rect.box   { fill: rgb(240,240,240); stroke: rgb(192,192,192); }
       rect.bg    { fill: rgb(255,255,255); }
       rect.cooling   { fill: rgb(64,200,64); stroke-width: 0; fill-opacity: 0.7; }
+      rect.limit   { fill: rgb(255,255,0); stroke-width: 0; fill-opacity: 0.7; }
       rect.busy  { fill: rgb(64,64,240); stroke-width: 0; fill-opacity: 0.7; }
       rect.temp    { fill: rgb(192,64,64); stroke-width: 0; fill-opacity: 0.7; }
       line       { stroke: rgb(64,64,64); stroke-width: 1; }
@@ -261,7 +295,7 @@ def record_to_csv(file_csv, duration, interval, all_cpu):
         gpu_sampling.start()
         line += "gpu%,"
 
-    for col in thermal_sensors + thermal_cdevs:
+    for col in thermal_rapls_uw + thermal_rapls_pl + thermal_sensors + thermal_cdevs:
         line += "{0},".format(col["type"])
     line = line[:-1] + "\n"
     file_csv.write(line)
@@ -279,7 +313,15 @@ def record_to_csv(file_csv, duration, interval, all_cpu):
             gpu_usage = gpu_sampling.get_usage()
             line += "{0},".format(gpu_usage)
 
-        for col in thermal_sensors + thermal_cdevs:
+        for uw in thermal_rapls_uw:
+            ts = time.time()
+            uj = int(open(uw["path"]).read().rstrip())
+            uw_val = (uj - uw["uj"]) / (ts - uw["ts"])
+            line += "{0},".format(uw_val)
+            uw["uj"] = uj
+            uw["ts"] = ts
+
+        for col in thermal_rapls_pl + thermal_sensors + thermal_cdevs:
 #            print("fetch: {0}".format(col["path"]))
             line += "{0},".format(open(col["path"]).read().rstrip())
         line = line[:-1] + "\n"
@@ -327,6 +369,12 @@ def csv_to_svg(file_csv, file_svg, comments):
         elif title in [x["type"] for x in thermal_cdevs]:
             color = "cooling"
             max_val = dict(zip([x["type"] for x in thermal_cdevs], [x["max"] for x in thermal_cdevs]))[title]
+        elif title in [x["type"] for x in thermal_rapls_uw]:
+            color = "temp"
+            max_val = thermal_rapl_max_val
+        elif title in [x["type"] for x in thermal_rapls_pl]:
+            color = "limit"
+            max_val = thermal_rapl_max_val
         elif re_is_cpufreq.match(title):
             i = re_get_num.search(title).group(0)
             tmp,max_val = get_cpu_freq_range(i)
@@ -339,9 +387,13 @@ def main(args):
 #    pp.pprint(args)
     scan_sensors()
     scan_cdevs(args.cpu_all)
+    scan_rapl()
     scan_thremald_config(args.config, args.product)
    # pp.pprint(thermal_sensors)
    # pp.pprint(thermal_cdevs)
+   # pp.pprint(thermal_rapls_pl)
+   # pp.pprint(thermal_rapls_uw)
+   # pp.pprint(thermal_rapl_max_val)
 
     sample_start_ts = time.time()
     with open("{0}/cbc_thermal_chart.csv".format(args.output_dir), 'w') as file_csv:
