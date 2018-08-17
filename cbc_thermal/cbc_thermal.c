@@ -71,6 +71,7 @@ struct cbc_th_io {
 static int cbc_th_io_ready;
 static int cbc_diagnosis_fd, cbc_signals_fd;
 static int cbc_fan0_val, cbc_amplifier_temp_val, cbc_env_temp_val, cbc_ambient_temp_val;
+static int cbc_th_auto_update = 1;
 
 static inline void write_exact(int fd, void *buf, int len)
 {
@@ -99,6 +100,13 @@ static void *cbc_read_thread(void *arg)
 		FD_SET(cbc_signals_fd, &rfd);
 		FD_SET(cbc_diagnosis_fd, &rfd);
 		select(max_fd + 1, &rfd, NULL, NULL, NULL);
+		if (!cbc_th_auto_update) {
+			if (FD_ISSET(cbc_signals_fd, &rfd))
+				len = read(cbc_signals_fd, buf, sizeof(buf));
+			if (FD_ISSET(cbc_diagnosis_fd, &rfd))
+				len = read(cbc_diagnosis_fd, buf, sizeof(buf));
+			continue;
+		}
 		if (FD_ISSET(cbc_signals_fd, &rfd)) {
 			int i, num;
 			unsigned char *sig;
@@ -149,6 +157,13 @@ static int cbc_amplifier_temp_read(char *buf, int len, void *data)
 	return ret;
 }
 
+static int cbc_amplifier_temp_write(char *buf, int len, void *data)
+{
+	cbc_amplifier_temp_val = atoi(buf);
+	pr_log("%s: %d\n", __func__, cbc_amplifier_temp_val);
+	return len;
+}
+
 static int cbc_env_temp_read(char *buf, int len, void *data)
 {
 	int ret = snprintf(buf, len, "%d", cbc_env_temp_val);
@@ -156,11 +171,25 @@ static int cbc_env_temp_read(char *buf, int len, void *data)
 	return ret;
 }
 
+static int cbc_env_temp_write(char *buf, int len, void *data)
+{
+	cbc_env_temp_val = atoi(buf);
+	pr_log("%s: %d\n", __func__, cbc_env_temp_val);
+	return len;
+}
+
 static int cbc_ambient_temp_read(char *buf, int len, void *data)
 {
 	int ret = snprintf(buf, len, "%d", cbc_ambient_temp_val);
 	pr_dbg("%s: %s\n", __func__, buf);
 	return ret;
+}
+
+static int cbc_ambient_temp_write(char *buf, int len, void *data)
+{
+	cbc_ambient_temp_val = atoi(buf);
+	pr_log("%s: %d\n", __func__, cbc_ambient_temp_val);
+	return len;
 }
 
 static int cbc_fan0_read(char *buf, int len, void *data)
@@ -180,6 +209,20 @@ static int cbc_fan0_write(char *buf, int len, void *data)
 	return len;
 }
 
+static int auto_update_read(char *buf, int len, void *data)
+{
+	int ret = snprintf(buf, len, "%d", cbc_th_auto_update);
+	pr_dbg("%s: %s\n", __func__, buf);
+	return ret;
+}
+
+static int auto_update_write(char *buf, int len, void *data)
+{
+	cbc_th_auto_update = !!atoi(buf);
+	pr_log("%s: %d\n", __func__, cbc_th_auto_update);
+	return len;
+}
+
 #define IO_INITS_NUM (sizeof(io_inits)/sizeof(io_inits[0]))
 static struct cbc_th_io io_inits[] = {
 /* sensors */
@@ -187,22 +230,31 @@ static struct cbc_th_io io_inits[] = {
 		/* IasTemperatureSensorAmplifier */
 		.name = "cbc_amplifier_temp",
 		.read = cbc_amplifier_temp_read,
+		.write = cbc_amplifier_temp_write,
 	},
 	{
 		/* IasTemperatureSensorEnvironment */
 		.name = "cbc_env_temp",
 		.read = cbc_env_temp_read,
+		.write = cbc_env_temp_write,
 	},
 	{
 		/* IasAmbientTemperature */
 		.name = "cbc_ambient_temp",
 		.read = cbc_ambient_temp_read,
+		.write = cbc_ambient_temp_write,
 	},
 /* cooling devices */
 	{
 		.name = "cbc_fan0",
 		.read = cbc_fan0_read,
 		.write = cbc_fan0_write,
+	},
+/* control */
+	{
+		.name = "auto_update",
+		.read = auto_update_read,
+		.write = auto_update_write,
 	},
 };
 
