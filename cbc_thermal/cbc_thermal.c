@@ -68,20 +68,23 @@ struct cbc_th_io {
 	int (*write)(char *buf, int len, void *data);
 };
 
+static pthread_mutex_t cbc_th_io_lock;
 static int cbc_th_io_ready;
 static int cbc_diagnosis_fd, cbc_signals_fd;
-static int cbc_fan0_val, cbc_amplifier_temp_val, cbc_env_temp_val, cbc_ambient_temp_val;
+static int cbc_fan0_val, cbc_fan0_min_val, cbc_amplifier_temp_val, cbc_env_temp_val, cbc_ambient_temp_val;
 static int cbc_th_auto_update = 1;
 
 static inline void write_exact(int fd, void *buf, int len)
 {
 	int ret;
 
+	pthread_mutex_lock(&cbc_th_io_lock);
 	while (len > 0) {
 		ret = write(fd, buf, len);
 		ASSERT(ret >= 0, "write error, ret=%d\n", ret);
 		len -= ret;
 	}
+	pthread_mutex_unlock(&cbc_th_io_lock);
 }
 
 static void *cbc_read_thread(void *arg)
@@ -100,12 +103,9 @@ static void *cbc_read_thread(void *arg)
 		FD_SET(cbc_signals_fd, &rfd);
 		FD_SET(cbc_diagnosis_fd, &rfd);
 		select(max_fd + 1, &rfd, NULL, NULL, NULL);
-		if (!cbc_th_auto_update) {
-			if (FD_ISSET(cbc_signals_fd, &rfd))
-				len = read(cbc_signals_fd, buf, sizeof(buf));
-			if (FD_ISSET(cbc_diagnosis_fd, &rfd))
-				len = read(cbc_diagnosis_fd, buf, sizeof(buf));
-			continue;
+		if (!cbc_th_auto_update && FD_ISSET(cbc_signals_fd, &rfd)) {
+			len = read(cbc_signals_fd, buf, sizeof(buf));
+			FD_CLR(cbc_signals_fd, &rfd);
 		}
 		if (FD_ISSET(cbc_signals_fd, &rfd)) {
 			int i, num;
@@ -142,8 +142,14 @@ static void *cbc_read_thread(void *arg)
 			len = read(cbc_diagnosis_fd, buf, sizeof(buf));
 			pr_dump(buf, len, "cbc_diagnosis: ");
 			if (len == 4 && buf[0] == 0x9) {
-				pr_dbg("cbc fan0 duty: %x\n", cbc_fan0_val);
 				cbc_fan0_val = buf[1];
+				pr_dbg("cbc fan0 duty: %x\n", cbc_fan0_val);
+				if (cbc_fan0_val < cbc_fan0_min_val) {
+					unsigned char cmd[] = {0x08, 0};
+					cmd[1] = (unsigned char)cbc_fan0_min_val;
+					pr_dbg("cbc fan0 duty < minimal duty, set to minimal duty: %x\n", cbc_fan0_min_val);
+					write_exact(cbc_diagnosis_fd, cmd, sizeof(cmd));
+				}
 			}
 		}
 	}
@@ -204,7 +210,8 @@ static int cbc_fan0_write(char *buf, int len, void *data)
 	unsigned char cmd[] = {0x08, 0};
 	cmd[1] = (unsigned char)atoi(buf);
 
-	pr_log("%s: duty=%d\n", __func__, (int)cmd[1]);
+	cbc_fan0_min_val = (int)cmd[1];
+	pr_log("%s: duty=%d\n", __func__, cbc_fan0_min_val);
 	write_exact(cbc_diagnosis_fd, cmd, sizeof(cmd));
 	return len;
 }
@@ -360,6 +367,7 @@ int main(void)
 
 	signal(SIGPIPE, SIG_IGN);
 
+	pthread_mutex_init(&cbc_th_io_lock, NULL);
 	pthread_attr_init(&attr);
 	pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
 	if (pthread_create(&pthread, (const pthread_attr_t *)&attr, cbc_read_thread, NULL) != 0)
