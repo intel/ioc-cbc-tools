@@ -41,6 +41,11 @@
 						<TargetState>100</TargetState>
 					</CoolingDevice>
 				</TripPoint>
+                                <TripPoint>
+                                        <SensorType>cbc_env_temp</SensorType>
+                                        <Temperature>100</Temperature>
+                                        <type>critical</type>
+                                </TripPoint>
 			</TripPoints>
 		</ThermalZone>
 	</ThermalZones>
