@@ -5,7 +5,7 @@ Conflicts=thermald.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/bash -c "/usr/bin/cbc_thermal & sleep 10; /usr/bin/thermald --no-daemon --ignore-cpuid-check --ignore-default-control --config-file /usr/share/ioc-cbc-tools/thermal-conf.xml"
+ExecStart=/usr/bin/bash -c "/usr/bin/cbc_thermald_start"
 Restart=no
 
 [Install]

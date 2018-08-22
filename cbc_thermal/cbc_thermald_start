@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+if [ ! -e /etc/ioc-cbc-tools/thermal-conf.xml ]; then
+	mkdir -p /etc/ioc-cbc-tools/
+	cp /usr/share/ioc-cbc-tools/thermal-conf.xml /etc/ioc-cbc-tools/thermal-conf.xml
+fi
+
+/usr/bin/cbc_thermal &
+sleep 10
+/usr/bin/thermald --no-daemon --ignore-cpuid-check --ignore-default-control --config-file /etc/ioc-cbc-tools/thermal-conf.xml
