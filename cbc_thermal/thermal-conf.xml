@@ -30,6 +30,25 @@
 	</CoolingDevices>
 	<ThermalZones>
 		<ThermalZone>
+			<Type>CBC_SOC</Type>
+			<TripPoints>
+				<TripPoint>
+					<SensorType>x86_pkg_temp</SensorType>
+					<Temperature>60000</Temperature>
+					<type>passive</type>
+					<CoolingDevice>
+						<Type>cbc_fan0</Type>
+						<TargetState>100</TargetState>
+					</CoolingDevice>
+				</TripPoint>
+				<TripPoint>
+					<SensorType>x86_pkg_temp</SensorType>
+					<Temperature>100000</Temperature>
+                                        <type>critical</type>
+				</TripPoint>
+			</TripPoints>
+		</ThermalZone>
+		<ThermalZone>
 			<Type>CBC_ENV</Type>
 			<TripPoints>
 				<TripPoint>
@@ -43,6 +62,16 @@
 				</TripPoint>
                                 <TripPoint>
                                         <SensorType>cbc_env_temp</SensorType>
+                                        <Temperature>100</Temperature>
+                                        <type>critical</type>
+                                </TripPoint>
+			</TripPoints>
+		</ThermalZone>
+		<ThermalZone>
+			<Type>CBC_Amplifier</Type>
+			<TripPoints>
+                                <TripPoint>
+					<SensorType>cbc_amplifier_temp</SensorType>
                                         <Temperature>100</Temperature>
                                         <type>critical</type>
                                 </TripPoint>
