@@ -34,7 +34,7 @@
 			<TripPoints>
 				<TripPoint>
 					<SensorType>x86_pkg_temp</SensorType>
-					<Temperature>45000</Temperature>
+					<Temperature>60000</Temperature>
 					<type>passive</type>
 					<CoolingDevice>
 						<Type>cbc_fan0</Type>
@@ -43,122 +43,38 @@
 				</TripPoint>
 				<TripPoint>
 					<SensorType>x86_pkg_temp</SensorType>
-					<Temperature>40000</Temperature>
-					<type>passive</type>
-					<CoolingDevice>
-						<Type>cbc_fan0</Type>
-						<TargetState>80</TargetState>
-					</CoolingDevice>
-				</TripPoint>
-				<TripPoint>
-					<SensorType>x86_pkg_temp</SensorType>
-					<Temperature>36000</Temperature>
-					<type>passive</type>
-					<CoolingDevice>
-						<Type>cbc_fan0</Type>
-						<TargetState>60</TargetState>
-					</CoolingDevice>
-				</TripPoint>
-				<TripPoint>
-					<SensorType>x86_pkg_temp</SensorType>
-					<Temperature>35000</Temperature>
-					<type>passive</type>
-					<CoolingDevice>
-						<Type>cbc_fan0</Type>
-						<TargetState>40</TargetState>
-					</CoolingDevice>
-				</TripPoint>
-				<TripPoint>
-					<SensorType>x86_pkg_temp</SensorType>
-					<Temperature>33000</Temperature>
-					<type>passive</type>
-					<CoolingDevice>
-						<Type>cbc_fan0</Type>
-						<TargetState>30</TargetState>
-					</CoolingDevice>
+					<Temperature>100000</Temperature>
+                                        <type>critical</type>
 				</TripPoint>
 			</TripPoints>
 		</ThermalZone>
 		<ThermalZone>
-			<Type>CBC_Board</Type>
+			<Type>CBC_ENV</Type>
 			<TripPoints>
 				<TripPoint>
 					<SensorType>cbc_env_temp</SensorType>
-					<Temperature>45</Temperature>
+					<Temperature>60</Temperature>
 					<type>passive</type>
 					<CoolingDevice>
 						<Type>cbc_fan0</Type>
 						<TargetState>100</TargetState>
 					</CoolingDevice>
 				</TripPoint>
-				<TripPoint>
-					<SensorType>cbc_env_temp</SensorType>
-					<Temperature>40</Temperature>
-					<type>passive</type>
-					<CoolingDevice>
-						<Type>cbc_fan0</Type>
-						<TargetState>80</TargetState>
-					</CoolingDevice>
-				</TripPoint>
-				<TripPoint>
-					<SensorType>cbc_env_temp</SensorType>
-					<Temperature>35</Temperature>
-					<type>passive</type>
-					<CoolingDevice>
-						<Type>cbc_fan0</Type>
-						<TargetState>60</TargetState>
-					</CoolingDevice>
-				</TripPoint>
-				<TripPoint>
-					<SensorType>cbc_env_temp</SensorType>
-					<Temperature>30</Temperature>
-					<type>passive</type>
-					<CoolingDevice>
-						<Type>cbc_fan0</Type>
-						<TargetState>40</TargetState>
-					</CoolingDevice>
-				</TripPoint>
+                                <TripPoint>
+                                        <SensorType>cbc_env_temp</SensorType>
+                                        <Temperature>100</Temperature>
+                                        <type>critical</type>
+                                </TripPoint>
 			</TripPoints>
 		</ThermalZone>
 		<ThermalZone>
 			<Type>CBC_Amplifier</Type>
 			<TripPoints>
-				<TripPoint>
+                                <TripPoint>
 					<SensorType>cbc_amplifier_temp</SensorType>
-					<Temperature>45</Temperature>
-					<type>passive</type>
-					<CoolingDevice>
-						<Type>cbc_fan0</Type>
-						<TargetState>100</TargetState>
-					</CoolingDevice>
-				</TripPoint>
-				<TripPoint>
-					<SensorType>cbc_amplifier_temp</SensorType>
-					<Temperature>40</Temperature>
-					<type>passive</type>
-					<CoolingDevice>
-						<Type>cbc_fan0</Type>
-						<TargetState>80</TargetState>
-					</CoolingDevice>
-				</TripPoint>
-				<TripPoint>
-					<SensorType>cbc_amplifier_temp</SensorType>
-					<Temperature>35</Temperature>
-					<type>passive</type>
-					<CoolingDevice>
-						<Type>cbc_fan0</Type>
-						<TargetState>60</TargetState>
-					</CoolingDevice>
-				</TripPoint>
-				<TripPoint>
-					<SensorType>cbc_amplifier_temp</SensorType>
-					<Temperature>30</Temperature>
-					<type>passive</type>
-					<CoolingDevice>
-						<Type>cbc_fan0</Type>
-						<TargetState>40</TargetState>
-					</CoolingDevice>
-				</TripPoint>
+                                        <Temperature>100</Temperature>
+                                        <type>critical</type>
+                                </TripPoint>
 			</TripPoints>
 		</ThermalZone>
 	</ThermalZones>
