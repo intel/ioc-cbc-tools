@@ -125,15 +125,15 @@ static void *cbc_read_thread(void *arg)
 				sig_val = sig[2] + (sig[3] << 8);
 				pr_dbg("sig: id=%d, val=%x\n", sig_id, sig_val);
 				if (sig_id == 502) {
-					cbc_amplifier_temp_val = (sig_val / 100) - 100;
+					cbc_amplifier_temp_val = sig_val * 10 - 100000;
 					pr_dbg("cbc_amplifier_temp_val=%x\n", cbc_amplifier_temp_val);
 				}
 				if (sig_id == 503) {
-					cbc_env_temp_val = (sig_val / 100) - 100;
+					cbc_env_temp_val = sig_val * 10 - 100000;
 					pr_dbg("cbc_env_temp_val=%x\n", cbc_env_temp_val);
 				}
 				if (sig_id == 870) {
-					cbc_ambient_temp_val = (sig_val / 100) - 100;
+					cbc_ambient_temp_val = sig_val * 10 - 100000;
 					pr_dbg("cbc_ambient_temp_val=%x\n", cbc_ambient_temp_val);
 				}
 			}
