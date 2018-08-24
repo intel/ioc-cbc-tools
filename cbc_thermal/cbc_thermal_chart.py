@@ -324,7 +324,7 @@ def record_to_csv(file_csv, duration, interval, all_cpu):
 
         for col in thermal_rapls_pl + thermal_sensors + thermal_cdevs:
 #            print("fetch: {0}".format(col["path"]))
-            line += "{0},".format(open(col["path"]).read().rstrip())
+            line += "{0},".format(open(col["path"]).read().rstrip().strip('\x00'))
         line = line[:-1] + "\n"
         file_csv.write(line)
 #        print("{0}".format(line))
