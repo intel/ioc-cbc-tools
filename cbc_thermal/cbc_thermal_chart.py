@@ -411,7 +411,7 @@ def parse_arguments(argv):
     parser.add_argument('--interval', type=int, default=1, help='Poll interval in seconds. [1]')
     parser.add_argument('--output-dir', type=str, default="/run/log/", help='Path to output files. [/run/log/]')
     parser.add_argument('--product', type=str, default="*", help='product name. [*]')
-    parser.add_argument('--config', type=str, default="/usr/share/ioc-cbc-tools/thermal-conf.xml", help='CBC Thermald config. [/usr/share/ioc-cbc-tools/thermal-conf.xml]')
+    parser.add_argument('--config', type=str, default="/etc/ioc-cbc-tools/thermal-conf.xml", help='CBC Thermald config. [/etc/ioc-cbc-tools/thermal-conf.xml]')
     parser.add_argument('--time', type=int, default=300, help='Record time in seconds. [300]')
     parser.add_argument('--cpu-all', action='store_const', const=True, help='Poll all cpu status, default: cpu0 only')
     return parser.parse_args(argv)
