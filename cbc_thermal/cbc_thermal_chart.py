@@ -164,7 +164,7 @@ def gen_svg_graph(y, color, title, data, max_val, min_val):
     tmp = 0;
     body += '<line class="sec10" x1="{0}" y1="0" x2="{0}" y2="100.000"/><text class="sec" x="{0}" y="-5.000" >{1}</text>\n'.format(0, 0)
     for val in data:
-        print("val: {0}".format(val))
+#        print("val: {0}".format(val))
         val = float(val)
         if val < min_val:
             val = min_val
@@ -208,7 +208,7 @@ class intel_gpu_usage_sampling(threading.Thread):
     def is_valid(self):
         return not self.pcimm == None
     def stop(self):
-        print("del gpu sampling ...")
+#        print("del gpu sampling ...")
         if self.is_valid():
             self.stop_pending = True
             self.join()
@@ -324,10 +324,10 @@ def record_to_csv(file_csv, duration, interval, all_cpu):
 
         for col in thermal_rapls_pl + thermal_sensors + thermal_cdevs:
 #            print("fetch: {0}".format(col["path"]))
-            line += "{0},".format(open(col["path"]).read().rstrip())
+            line += "{0},".format(open(col["path"]).read().rstrip().strip('\x00'))
         line = line[:-1] + "\n"
         file_csv.write(line)
-        print("{0}".format(line))
+#        print("{0}".format(line))
         time.sleep(interval)
     if gpu_sampling.is_valid():
         gpu_sampling.stop()
@@ -411,7 +411,7 @@ def parse_arguments(argv):
     parser.add_argument('--interval', type=int, default=1, help='Poll interval in seconds. [1]')
     parser.add_argument('--output-dir', type=str, default="/run/log/", help='Path to output files. [/run/log/]')
     parser.add_argument('--product', type=str, default="*", help='product name. [*]')
-    parser.add_argument('--config', type=str, default="/usr/share/ioc-cbc-tools/thermal-conf.xml", help='CBC Thermald config. [/usr/share/ioc-cbc-tools/thermal-conf.xml]')
+    parser.add_argument('--config', type=str, default="/etc/ioc-cbc-tools/thermal-conf.xml", help='CBC Thermald config. [/etc/ioc-cbc-tools/thermal-conf.xml]')
     parser.add_argument('--time', type=int, default=300, help='Record time in seconds. [300]')
     parser.add_argument('--cpu-all', action='store_const', const=True, help='Poll all cpu status, default: cpu0 only')
     return parser.parse_args(argv)

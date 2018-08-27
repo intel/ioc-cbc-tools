@@ -1,0 +1,1241 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+ <svg width="800px" height="2940px" version="1.1" xmlns="http://www.w3.org/2000/svg"> 
+<defs>
+  <style type="text/css">
+    <![CDATA[
+      rect       { stroke-width: 1; }
+      rect.box   { fill: rgb(240,240,240); stroke: rgb(192,192,192); }
+      rect.bg    { fill: rgb(255,255,255); }
+      rect.cooling   { fill: rgb(64,200,64); stroke-width: 0; fill-opacity: 0.7; }
+      rect.limit   { fill: rgb(255,255,0); stroke-width: 0; fill-opacity: 0.7; }
+      rect.busy  { fill: rgb(64,64,240); stroke-width: 0; fill-opacity: 0.7; }
+      rect.temp    { fill: rgb(192,64,64); stroke-width: 0; fill-opacity: 0.7; }
+      line       { stroke: rgb(64,64,64); stroke-width: 1; }
+      line.sec10  { stroke-width: 2; }
+      line.sec01 { stroke: rgb(224,224,224); stroke-width: 1; }
+      line.dot   { stroke-dasharray: 2 4; }
+      line.idle  { stroke: rgb(64,64,64); stroke-dasharray: 10 6; stroke-opacity: 0.7; }
+      text       { font-family: Verdana, Helvetica; font-size: 10; }
+      text.sec   { font-size: 8; }
+      text.t1    { font-size: 24; }
+      text.t2    { font-size: 12; }
+    ]]>
+   </style>
+</defs>
+
+<rect class="bg" width="100%" height="100%" />
+<g transform="translate(10,  0)">
+<text class="t1" x="0" y="20">sample start: 1529666419.63252</text>
+<text class="t1" x="0" y="40">sample interval: 1 sec</text>
+<text class="t1" x="0" y="60">sample duration: 30 sec</text>
+</g>
+
+<g transform="translate(10,120)">
+<rect class="box" x="0.000" y="0" width="600" height="100.000" />
+<text class="t2" x="8" y="-20">cpu%</text>
+<text class="t3" x="4" y="20">100.0</text>
+<text class="t3" x="4" y="100">0</text>
+<line class="sec10" x1="0" y1="0" x2="0" y2="100.000"/><text class="sec" x="0" y="-5.000" >0</text>
+<line class="sec01" x1="0" y1="0" x2="0" y2="100.000" />
+<rect class="busy" x="0" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="20" y1="0" x2="20" y2="100.000" />
+<rect class="busy" x="20" y="98.77762834963447" width="19" height="1.2223716503655258" />
+<line class="sec01" x1="40" y1="0" x2="40" y2="100.000" />
+<rect class="busy" x="40" y="99.2629729656027" width="19" height="0.7370270343972973" />
+<line class="sec01" x1="60" y1="0" x2="60" y2="100.000" />
+<rect class="busy" x="60" y="99.01970587255" width="19" height="0.9802941274500001" />
+<line class="sec01" x1="80" y1="0" x2="80" y2="100.000" />
+<rect class="busy" x="80" y="99.02210267970757" width="19" height="0.9778973202924207" />
+<line class="sec01" x1="100" y1="0" x2="100" y2="100.000" />
+<rect class="busy" x="100" y="98.28027025307297" width="19" height="1.7197297469270272" />
+<line class="sec01" x1="120" y1="0" x2="120" y2="100.000" />
+<rect class="busy" x="120" y="98.7746323406875" width="19" height="1.2253676593125002" />
+<line class="sec01" x1="140" y1="0" x2="140" y2="100.000" />
+<rect class="busy" x="140" y="99.50622221728445" width="19" height="0.49377778271555556" />
+<line class="sec01" x1="160" y1="0" x2="160" y2="100.000" />
+<rect class="busy" x="160" y="98.77762834963447" width="19" height="1.2223716503655258" />
+<line class="sec01" x1="180" y1="0" x2="180" y2="100.000" />
+<rect class="busy" x="180" y="99.2629729656027" width="19" height="0.7370270343972973" />
+<line class="sec10" x1="180" y1="0" x2="180" y2="100.000"/><text class="sec" x="180" y="-5.000" >10</text>
+<line class="sec01" x1="200" y1="0" x2="200" y2="100.000" />
+<rect class="busy" x="200" y="98.76859604679926" width="19" height="1.231403953200739" />
+<line class="sec01" x1="220" y1="0" x2="220" y2="100.000" />
+<rect class="busy" x="220" y="98.53315401956137" width="19" height="1.466845980438631" />
+<line class="sec01" x1="240" y1="0" x2="240" y2="100.000" />
+<rect class="busy" x="240" y="99.50864864373513" width="19" height="0.49135135626486487" />
+<line class="sec01" x1="260" y1="0" x2="260" y2="100.000" />
+<rect class="busy" x="260" y="99.01970587255" width="19" height="0.9802941274500001" />
+<line class="sec01" x1="280" y1="0" x2="280" y2="100.000" />
+<rect class="busy" x="280" y="99.02448779512292" width="19" height="0.9755122048770732" />
+<line class="sec01" x1="300" y1="0" x2="300" y2="100.000" />
+<rect class="busy" x="300" y="98.5259459312054" width="19" height="1.4740540687945947" />
+<line class="sec01" x1="320" y1="0" x2="320" y2="100.000" />
+<rect class="busy" x="320" y="98.53315401956137" width="19" height="1.466845980438631" />
+<line class="sec01" x1="340" y1="0" x2="340" y2="100.000" />
+<rect class="busy" x="340" y="99.5074384187197" width="19" height="0.4925615812802956" />
+<line class="sec01" x1="360" y1="0" x2="360" y2="100.000" />
+<rect class="busy" x="360" y="99.2647794044125" width="19" height="0.7352205955875" />
+<line class="sec01" x1="380" y1="0" x2="380" y2="100.000" />
+<rect class="busy" x="380" y="99.2629729656027" width="19" height="0.7370270343972973" />
+<line class="sec10" x1="380" y1="0" x2="380" y2="100.000"/><text class="sec" x="380" y="-5.000" >20</text>
+<line class="sec01" x1="400" y1="0" x2="400" y2="100.000" />
+<rect class="busy" x="400" y="99.01729728747027" width="19" height="0.9827027125297297" />
+<line class="sec01" x1="420" y1="0" x2="420" y2="100.000" />
+<rect class="busy" x="420" y="98.53315401956137" width="19" height="1.466845980438631" />
+<line class="sec01" x1="440" y1="0" x2="440" y2="100.000" />
+<rect class="busy" x="440" y="99.01970587255" width="19" height="0.9802941274500001" />
+<line class="sec01" x1="460" y1="0" x2="460" y2="100.000" />
+<rect class="busy" x="460" y="99.02210267970757" width="19" height="0.9778973202924207" />
+<line class="sec01" x1="480" y1="0" x2="480" y2="100.000" />
+<rect class="busy" x="480" y="99.01970587255" width="19" height="0.9802941274500001" />
+<line class="sec01" x1="500" y1="0" x2="500" y2="100.000" />
+<rect class="busy" x="500" y="98.7746323406875" width="19" height="1.2253676593125002" />
+<line class="sec01" x1="520" y1="0" x2="520" y2="100.000" />
+<rect class="busy" x="520" y="98.53315401956137" width="19" height="1.466845980438631" />
+<line class="sec01" x1="540" y1="0" x2="540" y2="100.000" />
+<rect class="busy" x="540" y="99.2647794044125" width="19" height="0.7352205955875" />
+<line class="sec01" x1="560" y1="0" x2="560" y2="100.000" />
+<rect class="busy" x="560" y="99.02210267970757" width="19" height="0.9778973202924207" />
+<line class="sec01" x1="580" y1="0" x2="580" y2="100.000" />
+<rect class="busy" x="580" y="98.78060974390365" width="19" height="1.2193902560963414" />
+<line class="sec10" x1="580" y1="0" x2="580" y2="100.000"/><text class="sec" x="580" y="-5.000" >30</text>
+</g>
+
+<g transform="translate(10,280)">
+<rect class="box" x="0.000" y="0" width="600" height="100.000" />
+<text class="t2" x="8" y="-20">cpu0_freq</text>
+<text class="t3" x="4" y="20">2400000.0</text>
+<text class="t3" x="4" y="100">0</text>
+<line class="sec10" x1="0" y1="0" x2="0" y2="100.000"/><text class="sec" x="0" y="-5.000" >0</text>
+<line class="sec01" x1="0" y1="0" x2="0" y2="100.000" />
+<rect class="busy" x="0" y="15.179917020083664" width="19" height="84.82008297991634" />
+<line class="sec01" x1="20" y1="0" x2="20" y2="100.000" />
+<rect class="busy" x="20" y="9.826500375722901" width="19" height="90.1734996242771" />
+<line class="sec01" x1="40" y1="0" x2="40" y2="100.000" />
+<rect class="busy" x="40" y="13.665750359726033" width="19" height="86.33424964027397" />
+<line class="sec01" x1="60" y1="0" x2="60" y2="100.000" />
+<rect class="busy" x="60" y="13.54550036022708" width="19" height="86.45449963977292" />
+<line class="sec01" x1="80" y1="0" x2="80" y2="100.000" />
+<rect class="busy" x="80" y="18.51654200618107" width="19" height="81.48345799381893" />
+<line class="sec01" x1="100" y1="0" x2="100" y2="100.000" />
+<rect class="busy" x="100" y="13.509000360379162" width="19" height="86.49099963962084" />
+<line class="sec01" x1="120" y1="0" x2="120" y2="100.000" />
+<rect class="busy" x="120" y="14.46662535638906" width="19" height="85.53337464361094" />
+<line class="sec01" x1="140" y1="0" x2="140" y2="100.000" />
+<rect class="busy" x="140" y="15.058292020590443" width="19" height="84.94170797940956" />
+<line class="sec01" x1="160" y1="0" x2="160" y2="100.000" />
+<rect class="busy" x="160" y="14.122083691157982" width="19" height="85.87791630884202" />
+<line class="sec01" x1="180" y1="0" x2="180" y2="100.000" />
+<rect class="busy" x="180" y="15.484375352148433" width="19" height="84.51562464785157" />
+<line class="sec10" x1="180" y1="0" x2="180" y2="100.000"/><text class="sec" x="180" y="-5.000" >10</text>
+<line class="sec01" x1="200" y1="0" x2="200" y2="100.000" />
+<rect class="busy" x="200" y="14.357083690178811" width="19" height="85.64291630982119" />
+<line class="sec01" x1="220" y1="0" x2="220" y2="100.000" />
+<rect class="busy" x="220" y="14.74700035522082" width="19" height="85.25299964477918" />
+<line class="sec01" x1="240" y1="0" x2="240" y2="100.000" />
+<rect class="busy" x="240" y="16.541208681078288" width="19" height="83.45879131892171" />
+<line class="sec01" x1="260" y1="0" x2="260" y2="100.000" />
+<rect class="busy" x="260" y="11.091542037118572" width="19" height="88.90845796288143" />
+<line class="sec01" x1="280" y1="0" x2="280" y2="100.000" />
+<rect class="busy" x="280" y="11.259583703085056" width="19" height="88.74041629691494" />
+<line class="sec01" x1="300" y1="0" x2="300" y2="100.000" />
+<rect class="busy" x="300" y="13.342125361074466" width="19" height="86.65787463892553" />
+<line class="sec01" x1="320" y1="0" x2="320" y2="100.000" />
+<rect class="busy" x="320" y="9.8901253754578" width="19" height="90.1098746245422" />
+<line class="sec01" x1="340" y1="0" x2="340" y2="100.000" />
+<rect class="busy" x="340" y="11.20879203663003" width="19" height="88.79120796336997" />
+<line class="sec01" x1="360" y1="0" x2="360" y2="100.000" />
+<rect class="busy" x="360" y="11.475917035517" width="19" height="88.524082964483" />
+<line class="sec01" x1="380" y1="0" x2="380" y2="100.000" />
+<rect class="busy" x="380" y="10.484167039649293" width="19" height="89.5158329603507" />
+<line class="sec10" x1="380" y1="0" x2="380" y2="100.000"/><text class="sec" x="380" y="-5.000" >20</text>
+<line class="sec01" x1="400" y1="0" x2="400" y2="100.000" />
+<rect class="busy" x="400" y="10.687208705469956" width="19" height="89.31279129453004" />
+<line class="sec01" x1="420" y1="0" x2="420" y2="100.000" />
+<rect class="busy" x="420" y="11.030167037374298" width="19" height="88.9698329626257" />
+<line class="sec01" x1="440" y1="0" x2="440" y2="100.000" />
+<rect class="busy" x="440" y="13.602500359989577" width="19" height="86.39749964001042" />
+<line class="sec01" x1="460" y1="0" x2="460" y2="100.000" />
+<rect class="busy" x="460" y="9.584667043397218" width="19" height="90.41533295660278" />
+<line class="sec01" x1="480" y1="0" x2="480" y2="100.000" />
+<rect class="busy" x="480" y="14.100125357916141" width="19" height="85.89987464208386" />
+<line class="sec01" x1="500" y1="0" x2="500" y2="100.000" />
+<rect class="busy" x="500" y="15.508375352048432" width="19" height="84.49162464795157" />
+<line class="sec01" x1="520" y1="0" x2="520" y2="100.000" />
+<rect class="busy" x="520" y="13.365750360976037" width="19" height="86.63424963902396" />
+<line class="sec01" x1="540" y1="0" x2="540" y2="100.000" />
+<rect class="busy" x="540" y="12.986292029223776" width="19" height="87.01370797077622" />
+<line class="sec01" x1="560" y1="0" x2="560" y2="100.000" />
+<rect class="busy" x="560" y="15.638625351505723" width="19" height="84.36137464849428" />
+<line class="sec01" x1="580" y1="0" x2="580" y2="100.000" />
+<rect class="busy" x="580" y="16.259833682250687" width="19" height="83.74016631774931" />
+<line class="sec10" x1="580" y1="0" x2="580" y2="100.000"/><text class="sec" x="580" y="-5.000" >30</text>
+</g>
+
+<g transform="translate(10,440)">
+<rect class="box" x="0.000" y="0" width="600" height="100.000" />
+<text class="t2" x="8" y="-20">gpu%</text>
+<text class="t3" x="4" y="20">100.0</text>
+<text class="t3" x="4" y="100">0</text>
+<line class="sec10" x1="0" y1="0" x2="0" y2="100.000"/><text class="sec" x="0" y="-5.000" >0</text>
+<line class="sec01" x1="0" y1="0" x2="0" y2="100.000" />
+<rect class="busy" x="0" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="20" y1="0" x2="20" y2="100.000" />
+<rect class="busy" x="20" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="40" y1="0" x2="40" y2="100.000" />
+<rect class="busy" x="40" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="60" y1="0" x2="60" y2="100.000" />
+<rect class="busy" x="60" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="80" y1="0" x2="80" y2="100.000" />
+<rect class="busy" x="80" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="100" y1="0" x2="100" y2="100.000" />
+<rect class="busy" x="100" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="120" y1="0" x2="120" y2="100.000" />
+<rect class="busy" x="120" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="140" y1="0" x2="140" y2="100.000" />
+<rect class="busy" x="140" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="160" y1="0" x2="160" y2="100.000" />
+<rect class="busy" x="160" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="180" y1="0" x2="180" y2="100.000" />
+<rect class="busy" x="180" y="100.0" width="19" height="0.0" />
+<line class="sec10" x1="180" y1="0" x2="180" y2="100.000"/><text class="sec" x="180" y="-5.000" >10</text>
+<line class="sec01" x1="200" y1="0" x2="200" y2="100.000" />
+<rect class="busy" x="200" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="220" y1="0" x2="220" y2="100.000" />
+<rect class="busy" x="220" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="240" y1="0" x2="240" y2="100.000" />
+<rect class="busy" x="240" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="260" y1="0" x2="260" y2="100.000" />
+<rect class="busy" x="260" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="280" y1="0" x2="280" y2="100.000" />
+<rect class="busy" x="280" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="300" y1="0" x2="300" y2="100.000" />
+<rect class="busy" x="300" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="320" y1="0" x2="320" y2="100.000" />
+<rect class="busy" x="320" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="340" y1="0" x2="340" y2="100.000" />
+<rect class="busy" x="340" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="360" y1="0" x2="360" y2="100.000" />
+<rect class="busy" x="360" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="380" y1="0" x2="380" y2="100.000" />
+<rect class="busy" x="380" y="100.0" width="19" height="0.0" />
+<line class="sec10" x1="380" y1="0" x2="380" y2="100.000"/><text class="sec" x="380" y="-5.000" >20</text>
+<line class="sec01" x1="400" y1="0" x2="400" y2="100.000" />
+<rect class="busy" x="400" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="420" y1="0" x2="420" y2="100.000" />
+<rect class="busy" x="420" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="440" y1="0" x2="440" y2="100.000" />
+<rect class="busy" x="440" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="460" y1="0" x2="460" y2="100.000" />
+<rect class="busy" x="460" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="480" y1="0" x2="480" y2="100.000" />
+<rect class="busy" x="480" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="500" y1="0" x2="500" y2="100.000" />
+<rect class="busy" x="500" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="520" y1="0" x2="520" y2="100.000" />
+<rect class="busy" x="520" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="540" y1="0" x2="540" y2="100.000" />
+<rect class="busy" x="540" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="560" y1="0" x2="560" y2="100.000" />
+<rect class="busy" x="560" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="580" y1="0" x2="580" y2="100.000" />
+<rect class="busy" x="580" y="100.0" width="19" height="0.0" />
+<line class="sec10" x1="580" y1="0" x2="580" y2="100.000"/><text class="sec" x="580" y="-5.000" >30</text>
+</g>
+
+<g transform="translate(10,600)">
+<rect class="box" x="0.000" y="0" width="600" height="100.000" />
+<text class="t2" x="8" y="-20">intel-rapl:0:package-0:energy_uw</text>
+<text class="t3" x="4" y="20">12499200.0</text>
+<text class="t3" x="4" y="100">0</text>
+<line class="sec10" x1="0" y1="0" x2="0" y2="100.000"/><text class="sec" x="0" y="-5.000" >0</text>
+<line class="sec01" x1="0" y1="0" x2="0" y2="100.000" />
+<rect class="temp" x="0" y="54.81377381317385" width="19" height="45.18622618682615" />
+<line class="sec01" x1="20" y1="0" x2="20" y2="100.000" />
+<rect class="temp" x="20" y="67.8054253452314" width="19" height="32.1945746547686" />
+<line class="sec01" x1="40" y1="0" x2="40" y2="100.000" />
+<rect class="temp" x="40" y="67.89712463184333" width="19" height="32.10287536815667" />
+<line class="sec01" x1="60" y1="0" x2="60" y2="100.000" />
+<rect class="temp" x="60" y="67.86959698393137" width="19" height="32.13040301606863" />
+<line class="sec01" x1="80" y1="0" x2="80" y2="100.000" />
+<rect class="temp" x="80" y="67.9113882810582" width="19" height="32.088611718941806" />
+<line class="sec01" x1="100" y1="0" x2="100" y2="100.000" />
+<rect class="temp" x="100" y="67.61705439218588" width="19" height="32.38294560781412" />
+<line class="sec01" x1="120" y1="0" x2="120" y2="100.000" />
+<rect class="temp" x="120" y="67.79162406461303" width="19" height="32.20837593538697" />
+<line class="sec01" x1="140" y1="0" x2="140" y2="100.000" />
+<rect class="temp" x="140" y="67.92861943027512" width="19" height="32.07138056972489" />
+<line class="sec01" x1="160" y1="0" x2="160" y2="100.000" />
+<rect class="temp" x="160" y="68.01491589356726" width="19" height="31.98508410643274" />
+<line class="sec01" x1="180" y1="0" x2="180" y2="100.000" />
+<rect class="temp" x="180" y="67.98903558336323" width="19" height="32.01096441663676" />
+<line class="sec10" x1="180" y1="0" x2="180" y2="100.000"/><text class="sec" x="180" y="-5.000" >10</text>
+<line class="sec01" x1="200" y1="0" x2="200" y2="100.000" />
+<rect class="temp" x="200" y="67.15198628465185" width="19" height="32.84801371534815" />
+<line class="sec01" x1="220" y1="0" x2="220" y2="100.000" />
+<rect class="temp" x="220" y="67.80154053105448" width="19" height="32.198459468945515" />
+<line class="sec01" x1="240" y1="0" x2="240" y2="100.000" />
+<rect class="temp" x="240" y="68.03077129460706" width="19" height="31.96922870539293" />
+<line class="sec01" x1="260" y1="0" x2="260" y2="100.000" />
+<rect class="temp" x="260" y="67.97262674856245" width="19" height="32.027373251437545" />
+<line class="sec01" x1="280" y1="0" x2="280" y2="100.000" />
+<rect class="temp" x="280" y="68.04710761207588" width="19" height="31.952892387924123" />
+<line class="sec01" x1="300" y1="0" x2="300" y2="100.000" />
+<rect class="temp" x="300" y="67.53344877707619" width="19" height="32.46655122292381" />
+<line class="sec01" x1="320" y1="0" x2="320" y2="100.000" />
+<rect class="temp" x="320" y="67.8500003690244" width="19" height="32.14999963097561" />
+<line class="sec01" x1="340" y1="0" x2="340" y2="100.000" />
+<rect class="temp" x="340" y="67.89787059268748" width="19" height="32.10212940731252" />
+<line class="sec01" x1="360" y1="0" x2="360" y2="100.000" />
+<rect class="temp" x="360" y="67.99661329142228" width="19" height="32.00338670857772" />
+<line class="sec01" x1="380" y1="0" x2="380" y2="100.000" />
+<rect class="temp" x="380" y="67.8800293739759" width="19" height="32.11997062602409" />
+<line class="sec10" x1="380" y1="0" x2="380" y2="100.000"/><text class="sec" x="380" y="-5.000" >20</text>
+<line class="sec01" x1="400" y1="0" x2="400" y2="100.000" />
+<rect class="temp" x="400" y="67.66998485234782" width="19" height="32.33001514765217" />
+<line class="sec01" x1="420" y1="0" x2="420" y2="100.000" />
+<rect class="temp" x="420" y="67.64967105513912" width="19" height="32.350328944860884" />
+<line class="sec01" x1="440" y1="0" x2="440" y2="100.000" />
+<rect class="temp" x="440" y="67.87859243817255" width="19" height="32.121407561827446" />
+<line class="sec01" x1="460" y1="0" x2="460" y2="100.000" />
+<rect class="temp" x="460" y="67.86876245317971" width="19" height="32.13123754682029" />
+<line class="sec01" x1="480" y1="0" x2="480" y2="100.000" />
+<rect class="temp" x="480" y="67.9046938727441" width="19" height="32.095306127255895" />
+<line class="sec01" x1="500" y1="0" x2="500" y2="100.000" />
+<rect class="temp" x="500" y="67.10301332418047" width="19" height="32.89698667581954" />
+<line class="sec01" x1="520" y1="0" x2="520" y2="100.000" />
+<rect class="temp" x="520" y="67.55123033973366" width="19" height="32.448769660266336" />
+<line class="sec01" x1="540" y1="0" x2="540" y2="100.000" />
+<rect class="temp" x="540" y="67.93315098587122" width="19" height="32.06684901412878" />
+<line class="sec01" x1="560" y1="0" x2="560" y2="100.000" />
+<rect class="temp" x="560" y="67.88049278583114" width="19" height="32.119507214168856" />
+<line class="sec01" x1="580" y1="0" x2="580" y2="100.000" />
+<rect class="temp" x="580" y="67.79081370810081" width="19" height="32.20918629189918" />
+<line class="sec10" x1="580" y1="0" x2="580" y2="100.000"/><text class="sec" x="580" y="-5.000" >30</text>
+</g>
+
+<g transform="translate(10,760)">
+<rect class="box" x="0.000" y="0" width="600" height="100.000" />
+<text class="t2" x="8" y="-20">intel-rapl:0:0:core:energy_uw</text>
+<text class="t3" x="4" y="20">12499200.0</text>
+<text class="t3" x="4" y="100">0</text>
+<line class="sec10" x1="0" y1="0" x2="0" y2="100.000"/><text class="sec" x="0" y="-5.000" >0</text>
+<line class="sec01" x1="0" y1="0" x2="0" y2="100.000" />
+<rect class="temp" x="0" y="92.38048686396999" width="19" height="7.619513136030005" />
+<line class="sec01" x1="20" y1="0" x2="20" y2="100.000" />
+<rect class="temp" x="20" y="98.95923233025907" width="19" height="1.0407676697409238" />
+<line class="sec01" x1="40" y1="0" x2="40" y2="100.000" />
+<rect class="temp" x="40" y="98.99157016548227" width="19" height="1.008429834517727" />
+<line class="sec01" x1="60" y1="0" x2="60" y2="100.000" />
+<rect class="temp" x="60" y="98.99014082506201" width="19" height="1.0098591749379828" />
+<line class="sec01" x1="80" y1="0" x2="80" y2="100.000" />
+<rect class="temp" x="80" y="98.96983116095993" width="19" height="1.030168839040067" />
+<line class="sec01" x1="100" y1="0" x2="100" y2="100.000" />
+<rect class="temp" x="100" y="98.83756941565629" width="19" height="1.1624305843437128" />
+<line class="sec01" x1="120" y1="0" x2="120" y2="100.000" />
+<rect class="temp" x="120" y="98.91276237561073" width="19" height="1.087237624389268" />
+<line class="sec01" x1="140" y1="0" x2="140" y2="100.000" />
+<rect class="temp" x="140" y="99.0207495386962" width="19" height="0.9792504613038131" />
+<line class="sec01" x1="160" y1="0" x2="160" y2="100.000" />
+<rect class="temp" x="160" y="99.00382720512167" width="19" height="0.9961727948783328" />
+<line class="sec01" x1="180" y1="0" x2="180" y2="100.000" />
+<rect class="temp" x="180" y="99.01293442355819" width="19" height="0.9870655764418136" />
+<line class="sec10" x1="180" y1="0" x2="180" y2="100.000"/><text class="sec" x="180" y="-5.000" >10</text>
+<line class="sec01" x1="200" y1="0" x2="200" y2="100.000" />
+<rect class="temp" x="200" y="98.71252449458594" width="19" height="1.2874755054140703" />
+<line class="sec01" x1="220" y1="0" x2="220" y2="100.000" />
+<rect class="temp" x="220" y="98.91570389408304" width="19" height="1.0842961059169616" />
+<line class="sec01" x1="240" y1="0" x2="240" y2="100.000" />
+<rect class="temp" x="240" y="99.04509521153331" width="19" height="0.9549047884666927" />
+<line class="sec01" x1="260" y1="0" x2="260" y2="100.000" />
+<rect class="temp" x="260" y="98.99123727452792" width="19" height="1.0087627254720752" />
+<line class="sec01" x1="280" y1="0" x2="280" y2="100.000" />
+<rect class="temp" x="280" y="98.99876205474611" width="19" height="1.0012379452538869" />
+<line class="sec01" x1="300" y1="0" x2="300" y2="100.000" />
+<rect class="temp" x="300" y="98.7973020542362" width="19" height="1.202697945763803" />
+<line class="sec01" x1="320" y1="0" x2="320" y2="100.000" />
+<rect class="temp" x="320" y="98.95300597396673" width="19" height="1.0469940260332784" />
+<line class="sec01" x1="340" y1="0" x2="340" y2="100.000" />
+<rect class="temp" x="340" y="98.98777196745293" width="19" height="1.0122280325470692" />
+<line class="sec01" x1="360" y1="0" x2="360" y2="100.000" />
+<rect class="temp" x="360" y="98.99823736898811" width="19" height="1.0017626310118843" />
+<line class="sec01" x1="380" y1="0" x2="380" y2="100.000" />
+<rect class="temp" x="380" y="98.9853831043602" width="19" height="1.0146168956398067" />
+<line class="sec10" x1="380" y1="0" x2="380" y2="100.000"/><text class="sec" x="380" y="-5.000" >20</text>
+<line class="sec01" x1="400" y1="0" x2="400" y2="100.000" />
+<rect class="temp" x="400" y="98.88465979023695" width="19" height="1.1153402097630531" />
+<line class="sec01" x1="420" y1="0" x2="420" y2="100.000" />
+<rect class="temp" x="420" y="98.84762953908124" width="19" height="1.1523704609187617" />
+<line class="sec01" x1="440" y1="0" x2="440" y2="100.000" />
+<rect class="temp" x="440" y="98.96462783397268" width="19" height="1.0353721660273112" />
+<line class="sec01" x1="460" y1="0" x2="460" y2="100.000" />
+<rect class="temp" x="460" y="98.9882841136169" width="19" height="1.0117158863830984" />
+<line class="sec01" x1="480" y1="0" x2="480" y2="100.000" />
+<rect class="temp" x="480" y="99.0001475426125" width="19" height="0.9998524573874982" />
+<line class="sec01" x1="500" y1="0" x2="500" y2="100.000" />
+<rect class="temp" x="500" y="98.71801071738331" width="19" height="1.281989282616696" />
+<line class="sec01" x1="520" y1="0" x2="520" y2="100.000" />
+<rect class="temp" x="520" y="98.80972642019944" width="19" height="1.190273579800565" />
+<line class="sec01" x1="540" y1="0" x2="540" y2="100.000" />
+<rect class="temp" x="540" y="98.96134656765388" width="19" height="1.0386534323461172" />
+<line class="sec01" x1="560" y1="0" x2="560" y2="100.000" />
+<rect class="temp" x="560" y="98.99019343575075" width="19" height="1.0098065642492478" />
+<line class="sec01" x1="580" y1="0" x2="580" y2="100.000" />
+<rect class="temp" x="580" y="98.97321479386109" width="19" height="1.026785206138912" />
+<line class="sec10" x1="580" y1="0" x2="580" y2="100.000"/><text class="sec" x="580" y="-5.000" >30</text>
+</g>
+
+<g transform="translate(10,920)">
+<rect class="box" x="0.000" y="0" width="600" height="100.000" />
+<text class="t2" x="8" y="-20">intel-rapl:0:1:uncore:energy_uw</text>
+<text class="t3" x="4" y="20">12499200.0</text>
+<text class="t3" x="4" y="100">0</text>
+<line class="sec10" x1="0" y1="0" x2="0" y2="100.000"/><text class="sec" x="0" y="-5.000" >0</text>
+<line class="sec01" x1="0" y1="0" x2="0" y2="100.000" />
+<rect class="temp" x="0" y="28.73205075322224" width="19" height="71.26794924677776" />
+<line class="sec01" x1="20" y1="0" x2="20" y2="100.000" />
+<rect class="temp" x="20" y="38.27006196217287" width="19" height="61.72993803782713" />
+<line class="sec01" x1="40" y1="0" x2="40" y2="100.000" />
+<rect class="temp" x="40" y="38.28218746332544" width="19" height="61.71781253667456" />
+<line class="sec01" x1="60" y1="0" x2="60" y2="100.000" />
+<rect class="temp" x="60" y="38.41012822588089" width="19" height="61.58987177411911" />
+<line class="sec01" x1="80" y1="0" x2="80" y2="100.000" />
+<rect class="temp" x="80" y="38.30635620395297" width="19" height="61.69364379604703" />
+<line class="sec01" x1="100" y1="0" x2="100" y2="100.000" />
+<rect class="temp" x="100" y="37.97320787550323" width="19" height="62.02679212449677" />
+<line class="sec01" x1="120" y1="0" x2="120" y2="100.000" />
+<rect class="temp" x="120" y="37.8423633973065" width="19" height="62.1576366026935" />
+<line class="sec01" x1="140" y1="0" x2="140" y2="100.000" />
+<rect class="temp" x="140" y="38.18445243825688" width="19" height="61.81554756174312" />
+<line class="sec01" x1="160" y1="0" x2="160" y2="100.000" />
+<rect class="temp" x="160" y="38.04088725135113" width="19" height="61.95911274864887" />
+<line class="sec01" x1="180" y1="0" x2="180" y2="100.000" />
+<rect class="temp" x="180" y="38.16761828624293" width="19" height="61.83238171375707" />
+<line class="sec10" x1="180" y1="0" x2="180" y2="100.000"/><text class="sec" x="180" y="-5.000" >10</text>
+<line class="sec01" x1="200" y1="0" x2="200" y2="100.000" />
+<rect class="temp" x="200" y="37.352127567884445" width="19" height="62.647872432115555" />
+<line class="sec01" x1="220" y1="0" x2="220" y2="100.000" />
+<rect class="temp" x="220" y="38.05718382698938" width="19" height="61.94281617301062" />
+<line class="sec01" x1="240" y1="0" x2="240" y2="100.000" />
+<rect class="temp" x="240" y="38.52034933452985" width="19" height="61.47965066547015" />
+<line class="sec01" x1="260" y1="0" x2="260" y2="100.000" />
+<rect class="temp" x="260" y="38.39512834931426" width="19" height="61.60487165068574" />
+<line class="sec01" x1="280" y1="0" x2="280" y2="100.000" />
+<rect class="temp" x="280" y="38.28285390235901" width="19" height="61.71714609764099" />
+<line class="sec01" x1="300" y1="0" x2="300" y2="100.000" />
+<rect class="temp" x="300" y="37.77250144660705" width="19" height="62.22749855339295" />
+<line class="sec01" x1="320" y1="0" x2="320" y2="100.000" />
+<rect class="temp" x="320" y="38.11797540119238" width="19" height="61.88202459880762" />
+<line class="sec01" x1="340" y1="0" x2="340" y2="100.000" />
+<rect class="temp" x="340" y="38.2257473581615" width="19" height="61.7742526418385" />
+<line class="sec01" x1="360" y1="0" x2="360" y2="100.000" />
+<rect class="temp" x="360" y="38.15669238919687" width="19" height="61.84330761080313" />
+<line class="sec01" x1="380" y1="0" x2="380" y2="100.000" />
+<rect class="temp" x="380" y="38.080727229932705" width="19" height="61.919272770067295" />
+<line class="sec10" x1="380" y1="0" x2="380" y2="100.000"/><text class="sec" x="380" y="-5.000" >20</text>
+<line class="sec01" x1="400" y1="0" x2="400" y2="100.000" />
+<rect class="temp" x="400" y="37.98371137541405" width="19" height="62.01628862458595" />
+<line class="sec01" x1="420" y1="0" x2="420" y2="100.000" />
+<rect class="temp" x="420" y="38.01085849881598" width="19" height="61.98914150118402" />
+<line class="sec01" x1="440" y1="0" x2="440" y2="100.000" />
+<rect class="temp" x="440" y="38.032350845469786" width="19" height="61.967649154530214" />
+<line class="sec01" x1="460" y1="0" x2="460" y2="100.000" />
+<rect class="temp" x="460" y="38.233977924562" width="19" height="61.766022075438" />
+<line class="sec01" x1="480" y1="0" x2="480" y2="100.000" />
+<rect class="temp" x="480" y="38.3490446945022" width="19" height="61.6509553054978" />
+<line class="sec01" x1="500" y1="0" x2="500" y2="100.000" />
+<rect class="temp" x="500" y="37.092477490003375" width="19" height="62.907522509996625" />
+<line class="sec01" x1="520" y1="0" x2="520" y2="100.000" />
+<rect class="temp" x="520" y="37.56638107347509" width="19" height="62.43361892652491" />
+<line class="sec01" x1="540" y1="0" x2="540" y2="100.000" />
+<rect class="temp" x="540" y="38.13960417852782" width="19" height="61.86039582147218" />
+<line class="sec01" x1="560" y1="0" x2="560" y2="100.000" />
+<rect class="temp" x="560" y="38.11827951723563" width="19" height="61.88172048276437" />
+<line class="sec01" x1="580" y1="0" x2="580" y2="100.000" />
+<rect class="temp" x="580" y="38.05585020134942" width="19" height="61.94414979865058" />
+<line class="sec10" x1="580" y1="0" x2="580" y2="100.000"/><text class="sec" x="580" y="-5.000" >30</text>
+</g>
+
+<g transform="translate(10,1080)">
+<rect class="box" x="0.000" y="0" width="600" height="100.000" />
+<text class="t2" x="8" y="-20">intel-rapl:0:2:dram:energy_uw</text>
+<text class="t3" x="4" y="20">12499200.0</text>
+<text class="t3" x="4" y="100">0</text>
+<line class="sec10" x1="0" y1="0" x2="0" y2="100.000"/><text class="sec" x="0" y="-5.000" >0</text>
+<line class="sec01" x1="0" y1="0" x2="0" y2="100.000" />
+<rect class="temp" x="0" y="98.95661973875167" width="19" height="1.043380261248328" />
+<line class="sec01" x1="20" y1="0" x2="20" y2="100.000" />
+<rect class="temp" x="20" y="99.79857643185024" width="19" height="0.2014235681497613" />
+<line class="sec01" x1="40" y1="0" x2="40" y2="100.000" />
+<rect class="temp" x="40" y="99.79310820949024" width="19" height="0.20689179050975257" />
+<line class="sec01" x1="60" y1="0" x2="60" y2="100.000" />
+<rect class="temp" x="60" y="99.79546147647974" width="19" height="0.20453852352025703" />
+<line class="sec01" x1="80" y1="0" x2="80" y2="100.000" />
+<rect class="temp" x="80" y="99.79706854799349" width="19" height="0.20293145200650617" />
+<line class="sec01" x1="100" y1="0" x2="100" y2="100.000" />
+<rect class="temp" x="100" y="99.77707967473509" width="19" height="0.22292032526490185" />
+<line class="sec01" x1="120" y1="0" x2="120" y2="100.000" />
+<rect class="temp" x="120" y="99.78293509336366" width="19" height="0.21706490663634365" />
+<line class="sec01" x1="140" y1="0" x2="140" y2="100.000" />
+<rect class="temp" x="140" y="99.80033652729932" width="19" height="0.1996634727006741" />
+<line class="sec01" x1="160" y1="0" x2="160" y2="100.000" />
+<rect class="temp" x="160" y="99.80724907747675" width="19" height="0.19275092252324794" />
+<line class="sec01" x1="180" y1="0" x2="180" y2="100.000" />
+<rect class="temp" x="180" y="99.80191468774345" width="19" height="0.19808531225655002" />
+<line class="sec10" x1="180" y1="0" x2="180" y2="100.000"/><text class="sec" x="180" y="-5.000" >10</text>
+<line class="sec01" x1="200" y1="0" x2="200" y2="100.000" />
+<rect class="temp" x="200" y="99.74915348942112" width="19" height="0.25084651057887886" />
+<line class="sec01" x1="220" y1="0" x2="220" y2="100.000" />
+<rect class="temp" x="220" y="99.78220780922327" width="19" height="0.21779219077672965" />
+<line class="sec01" x1="240" y1="0" x2="240" y2="100.000" />
+<rect class="temp" x="240" y="99.80252262031541" width="19" height="0.19747737968458007" />
+<line class="sec01" x1="260" y1="0" x2="260" y2="100.000" />
+<rect class="temp" x="260" y="99.79761939060178" width="19" height="0.20238060939821675" />
+<line class="sec01" x1="280" y1="0" x2="280" y2="100.000" />
+<rect class="temp" x="280" y="99.8034565276862" width="19" height="0.1965434723138072" />
+<line class="sec01" x1="300" y1="0" x2="300" y2="100.000" />
+<rect class="temp" x="300" y="99.7577062587523" width="19" height="0.24229374124770114" />
+<line class="sec01" x1="320" y1="0" x2="320" y2="100.000" />
+<rect class="temp" x="320" y="99.78666613841969" width="19" height="0.21333386158031156" />
+<line class="sec01" x1="340" y1="0" x2="340" y2="100.000" />
+<rect class="temp" x="340" y="99.80103589278004" width="19" height="0.19896410721996977" />
+<line class="sec01" x1="360" y1="0" x2="360" y2="100.000" />
+<rect class="temp" x="360" y="99.80591924978395" width="19" height="0.1940807502160471" />
+<line class="sec01" x1="380" y1="0" x2="380" y2="100.000" />
+<rect class="temp" x="380" y="99.79242085137038" width="19" height="0.20757914862961635" />
+<line class="sec10" x1="380" y1="0" x2="380" y2="100.000"/><text class="sec" x="380" y="-5.000" >20</text>
+<line class="sec01" x1="400" y1="0" x2="400" y2="100.000" />
+<rect class="temp" x="400" y="99.77357145578257" width="19" height="0.2264285442174268" />
+<line class="sec01" x1="420" y1="0" x2="420" y2="100.000" />
+<rect class="temp" x="420" y="99.77580248753365" width="19" height="0.22419751246634248" />
+<line class="sec01" x1="440" y1="0" x2="440" y2="100.000" />
+<rect class="temp" x="440" y="99.78145790930093" width="19" height="0.21854209069907168" />
+<line class="sec01" x1="460" y1="0" x2="460" y2="100.000" />
+<rect class="temp" x="460" y="99.80371958261158" width="19" height="0.19628041738842172" />
+<line class="sec01" x1="480" y1="0" x2="480" y2="100.000" />
+<rect class="temp" x="480" y="99.809431480625" width="19" height="0.19056851937500396" />
+<line class="sec01" x1="500" y1="0" x2="500" y2="100.000" />
+<rect class="temp" x="500" y="99.76013071155198" width="19" height="0.23986928844801422" />
+<line class="sec01" x1="520" y1="0" x2="520" y2="100.000" />
+<rect class="temp" x="520" y="99.75745392315443" width="19" height="0.24254607684556745" />
+<line class="sec01" x1="540" y1="0" x2="540" y2="100.000" />
+<rect class="temp" x="540" y="99.78615051351191" width="19" height="0.21384948648808472" />
+<line class="sec01" x1="560" y1="0" x2="560" y2="100.000" />
+<rect class="temp" x="560" y="99.78427242288082" width="19" height="0.21572757711918597" />
+<line class="sec01" x1="580" y1="0" x2="580" y2="100.000" />
+<rect class="temp" x="580" y="99.78357116588356" width="19" height="0.21642883411643968" />
+<line class="sec10" x1="580" y1="0" x2="580" y2="100.000"/><text class="sec" x="580" y="-5.000" >30</text>
+</g>
+
+<g transform="translate(10,1240)">
+<rect class="box" x="0.000" y="0" width="600" height="100.000" />
+<text class="t2" x="8" y="-20">intel-rapl:0:package-0:long_term</text>
+<text class="t3" x="4" y="20">12499200.0</text>
+<text class="t3" x="4" y="100">0</text>
+<line class="sec10" x1="0" y1="0" x2="0" y2="100.000"/><text class="sec" x="0" y="-5.000" >0</text>
+<line class="sec01" x1="0" y1="0" x2="0" y2="100.000" />
+<rect class="limit" x="0" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="20" y1="0" x2="20" y2="100.000" />
+<rect class="limit" x="20" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="40" y1="0" x2="40" y2="100.000" />
+<rect class="limit" x="40" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="60" y1="0" x2="60" y2="100.000" />
+<rect class="limit" x="60" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="80" y1="0" x2="80" y2="100.000" />
+<rect class="limit" x="80" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="100" y1="0" x2="100" y2="100.000" />
+<rect class="limit" x="100" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="120" y1="0" x2="120" y2="100.000" />
+<rect class="limit" x="120" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="140" y1="0" x2="140" y2="100.000" />
+<rect class="limit" x="140" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="160" y1="0" x2="160" y2="100.000" />
+<rect class="limit" x="160" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="180" y1="0" x2="180" y2="100.000" />
+<rect class="limit" x="180" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec10" x1="180" y1="0" x2="180" y2="100.000"/><text class="sec" x="180" y="-5.000" >10</text>
+<line class="sec01" x1="200" y1="0" x2="200" y2="100.000" />
+<rect class="limit" x="200" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="220" y1="0" x2="220" y2="100.000" />
+<rect class="limit" x="220" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="240" y1="0" x2="240" y2="100.000" />
+<rect class="limit" x="240" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="260" y1="0" x2="260" y2="100.000" />
+<rect class="limit" x="260" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="280" y1="0" x2="280" y2="100.000" />
+<rect class="limit" x="280" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="300" y1="0" x2="300" y2="100.000" />
+<rect class="limit" x="300" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="320" y1="0" x2="320" y2="100.000" />
+<rect class="limit" x="320" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="340" y1="0" x2="340" y2="100.000" />
+<rect class="limit" x="340" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="360" y1="0" x2="360" y2="100.000" />
+<rect class="limit" x="360" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="380" y1="0" x2="380" y2="100.000" />
+<rect class="limit" x="380" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec10" x1="380" y1="0" x2="380" y2="100.000"/><text class="sec" x="380" y="-5.000" >20</text>
+<line class="sec01" x1="400" y1="0" x2="400" y2="100.000" />
+<rect class="limit" x="400" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="420" y1="0" x2="420" y2="100.000" />
+<rect class="limit" x="420" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="440" y1="0" x2="440" y2="100.000" />
+<rect class="limit" x="440" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="460" y1="0" x2="460" y2="100.000" />
+<rect class="limit" x="460" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="480" y1="0" x2="480" y2="100.000" />
+<rect class="limit" x="480" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="500" y1="0" x2="500" y2="100.000" />
+<rect class="limit" x="500" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="520" y1="0" x2="520" y2="100.000" />
+<rect class="limit" x="520" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="540" y1="0" x2="540" y2="100.000" />
+<rect class="limit" x="540" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="560" y1="0" x2="560" y2="100.000" />
+<rect class="limit" x="560" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="580" y1="0" x2="580" y2="100.000" />
+<rect class="limit" x="580" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec10" x1="580" y1="0" x2="580" y2="100.000"/><text class="sec" x="580" y="-5.000" >30</text>
+</g>
+
+<g transform="translate(10,1400)">
+<rect class="box" x="0.000" y="0" width="600" height="100.000" />
+<text class="t2" x="8" y="-20">intel-rapl:0:package-0:short_term</text>
+<text class="t3" x="4" y="20">12499200.0</text>
+<text class="t3" x="4" y="100">0</text>
+<line class="sec10" x1="0" y1="0" x2="0" y2="100.000"/><text class="sec" x="0" y="-5.000" >0</text>
+<line class="sec01" x1="0" y1="0" x2="0" y2="100.000" />
+<rect class="limit" x="0" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="20" y1="0" x2="20" y2="100.000" />
+<rect class="limit" x="20" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="40" y1="0" x2="40" y2="100.000" />
+<rect class="limit" x="40" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="60" y1="0" x2="60" y2="100.000" />
+<rect class="limit" x="60" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="80" y1="0" x2="80" y2="100.000" />
+<rect class="limit" x="80" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="100" y1="0" x2="100" y2="100.000" />
+<rect class="limit" x="100" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="120" y1="0" x2="120" y2="100.000" />
+<rect class="limit" x="120" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="140" y1="0" x2="140" y2="100.000" />
+<rect class="limit" x="140" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="160" y1="0" x2="160" y2="100.000" />
+<rect class="limit" x="160" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="180" y1="0" x2="180" y2="100.000" />
+<rect class="limit" x="180" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec10" x1="180" y1="0" x2="180" y2="100.000"/><text class="sec" x="180" y="-5.000" >10</text>
+<line class="sec01" x1="200" y1="0" x2="200" y2="100.000" />
+<rect class="limit" x="200" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="220" y1="0" x2="220" y2="100.000" />
+<rect class="limit" x="220" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="240" y1="0" x2="240" y2="100.000" />
+<rect class="limit" x="240" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="260" y1="0" x2="260" y2="100.000" />
+<rect class="limit" x="260" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="280" y1="0" x2="280" y2="100.000" />
+<rect class="limit" x="280" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="300" y1="0" x2="300" y2="100.000" />
+<rect class="limit" x="300" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="320" y1="0" x2="320" y2="100.000" />
+<rect class="limit" x="320" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="340" y1="0" x2="340" y2="100.000" />
+<rect class="limit" x="340" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="360" y1="0" x2="360" y2="100.000" />
+<rect class="limit" x="360" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="380" y1="0" x2="380" y2="100.000" />
+<rect class="limit" x="380" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec10" x1="380" y1="0" x2="380" y2="100.000"/><text class="sec" x="380" y="-5.000" >20</text>
+<line class="sec01" x1="400" y1="0" x2="400" y2="100.000" />
+<rect class="limit" x="400" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="420" y1="0" x2="420" y2="100.000" />
+<rect class="limit" x="420" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="440" y1="0" x2="440" y2="100.000" />
+<rect class="limit" x="440" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="460" y1="0" x2="460" y2="100.000" />
+<rect class="limit" x="460" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="480" y1="0" x2="480" y2="100.000" />
+<rect class="limit" x="480" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="500" y1="0" x2="500" y2="100.000" />
+<rect class="limit" x="500" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="520" y1="0" x2="520" y2="100.000" />
+<rect class="limit" x="520" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="540" y1="0" x2="540" y2="100.000" />
+<rect class="limit" x="540" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="560" y1="0" x2="560" y2="100.000" />
+<rect class="limit" x="560" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec01" x1="580" y1="0" x2="580" y2="100.000" />
+<rect class="limit" x="580" y="8.000512252692715e-08" width="19" height="99.99999991999488" />
+<line class="sec10" x1="580" y1="0" x2="580" y2="100.000"/><text class="sec" x="580" y="-5.000" >30</text>
+</g>
+
+<g transform="translate(10,1560)">
+<rect class="box" x="0.000" y="0" width="600" height="100.000" />
+<text class="t2" x="8" y="-20">acpitz:z0</text>
+<text class="t3" x="4" y="20">110000.0</text>
+<text class="t3" x="4" y="100">0</text>
+<line class="sec10" x1="0" y1="0" x2="0" y2="100.000"/><text class="sec" x="0" y="-5.000" >0</text>
+<line class="sec01" x1="0" y1="0" x2="0" y2="100.000" />
+<rect class="temp" x="0" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="20" y1="0" x2="20" y2="100.000" />
+<rect class="temp" x="20" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="40" y1="0" x2="40" y2="100.000" />
+<rect class="temp" x="40" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="60" y1="0" x2="60" y2="100.000" />
+<rect class="temp" x="60" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="80" y1="0" x2="80" y2="100.000" />
+<rect class="temp" x="80" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="100" y1="0" x2="100" y2="100.000" />
+<rect class="temp" x="100" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="120" y1="0" x2="120" y2="100.000" />
+<rect class="temp" x="120" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="140" y1="0" x2="140" y2="100.000" />
+<rect class="temp" x="140" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="160" y1="0" x2="160" y2="100.000" />
+<rect class="temp" x="160" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="180" y1="0" x2="180" y2="100.000" />
+<rect class="temp" x="180" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec10" x1="180" y1="0" x2="180" y2="100.000"/><text class="sec" x="180" y="-5.000" >10</text>
+<line class="sec01" x1="200" y1="0" x2="200" y2="100.000" />
+<rect class="temp" x="200" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="220" y1="0" x2="220" y2="100.000" />
+<rect class="temp" x="220" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="240" y1="0" x2="240" y2="100.000" />
+<rect class="temp" x="240" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="260" y1="0" x2="260" y2="100.000" />
+<rect class="temp" x="260" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="280" y1="0" x2="280" y2="100.000" />
+<rect class="temp" x="280" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="300" y1="0" x2="300" y2="100.000" />
+<rect class="temp" x="300" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="320" y1="0" x2="320" y2="100.000" />
+<rect class="temp" x="320" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="340" y1="0" x2="340" y2="100.000" />
+<rect class="temp" x="340" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="360" y1="0" x2="360" y2="100.000" />
+<rect class="temp" x="360" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="380" y1="0" x2="380" y2="100.000" />
+<rect class="temp" x="380" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec10" x1="380" y1="0" x2="380" y2="100.000"/><text class="sec" x="380" y="-5.000" >20</text>
+<line class="sec01" x1="400" y1="0" x2="400" y2="100.000" />
+<rect class="temp" x="400" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="420" y1="0" x2="420" y2="100.000" />
+<rect class="temp" x="420" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="440" y1="0" x2="440" y2="100.000" />
+<rect class="temp" x="440" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="460" y1="0" x2="460" y2="100.000" />
+<rect class="temp" x="460" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="480" y1="0" x2="480" y2="100.000" />
+<rect class="temp" x="480" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="500" y1="0" x2="500" y2="100.000" />
+<rect class="temp" x="500" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="520" y1="0" x2="520" y2="100.000" />
+<rect class="temp" x="520" y="65.45454859504103" width="19" height="34.54545140495897" />
+<line class="sec01" x1="540" y1="0" x2="540" y2="100.000" />
+<rect class="temp" x="540" y="65.45454859504103" width="19" height="34.54545140495897" />
+<line class="sec01" x1="560" y1="0" x2="560" y2="100.000" />
+<rect class="temp" x="560" y="65.45454859504103" width="19" height="34.54545140495897" />
+<line class="sec01" x1="580" y1="0" x2="580" y2="100.000" />
+<rect class="temp" x="580" y="65.45454859504103" width="19" height="34.54545140495897" />
+<line class="sec10" x1="580" y1="0" x2="580" y2="100.000"/><text class="sec" x="580" y="-5.000" >30</text>
+</g>
+
+<g transform="translate(10,1720)">
+<rect class="box" x="0.000" y="0" width="600" height="100.000" />
+<text class="t2" x="8" y="-20">x86_pkg_temp:z1</text>
+<text class="t3" x="4" y="20">110000.0</text>
+<text class="t3" x="4" y="100">0</text>
+<line class="sec10" x1="0" y1="0" x2="0" y2="100.000"/><text class="sec" x="0" y="-5.000" >0</text>
+<line class="sec01" x1="0" y1="0" x2="0" y2="100.000" />
+<rect class="temp" x="0" y="65.45454859504103" width="19" height="34.54545140495897" />
+<line class="sec01" x1="20" y1="0" x2="20" y2="100.000" />
+<rect class="temp" x="20" y="65.45454859504103" width="19" height="34.54545140495897" />
+<line class="sec01" x1="40" y1="0" x2="40" y2="100.000" />
+<rect class="temp" x="40" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="60" y1="0" x2="60" y2="100.000" />
+<rect class="temp" x="60" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="80" y1="0" x2="80" y2="100.000" />
+<rect class="temp" x="80" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="100" y1="0" x2="100" y2="100.000" />
+<rect class="temp" x="100" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="120" y1="0" x2="120" y2="100.000" />
+<rect class="temp" x="120" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="140" y1="0" x2="140" y2="100.000" />
+<rect class="temp" x="140" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="160" y1="0" x2="160" y2="100.000" />
+<rect class="temp" x="160" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="180" y1="0" x2="180" y2="100.000" />
+<rect class="temp" x="180" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec10" x1="180" y1="0" x2="180" y2="100.000"/><text class="sec" x="180" y="-5.000" >10</text>
+<line class="sec01" x1="200" y1="0" x2="200" y2="100.000" />
+<rect class="temp" x="200" y="65.45454859504103" width="19" height="34.54545140495897" />
+<line class="sec01" x1="220" y1="0" x2="220" y2="100.000" />
+<rect class="temp" x="220" y="65.45454859504103" width="19" height="34.54545140495897" />
+<line class="sec01" x1="240" y1="0" x2="240" y2="100.000" />
+<rect class="temp" x="240" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="260" y1="0" x2="260" y2="100.000" />
+<rect class="temp" x="260" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="280" y1="0" x2="280" y2="100.000" />
+<rect class="temp" x="280" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="300" y1="0" x2="300" y2="100.000" />
+<rect class="temp" x="300" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="320" y1="0" x2="320" y2="100.000" />
+<rect class="temp" x="320" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="340" y1="0" x2="340" y2="100.000" />
+<rect class="temp" x="340" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="360" y1="0" x2="360" y2="100.000" />
+<rect class="temp" x="360" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="380" y1="0" x2="380" y2="100.000" />
+<rect class="temp" x="380" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec10" x1="380" y1="0" x2="380" y2="100.000"/><text class="sec" x="380" y="-5.000" >20</text>
+<line class="sec01" x1="400" y1="0" x2="400" y2="100.000" />
+<rect class="temp" x="400" y="65.45454859504103" width="19" height="34.54545140495897" />
+<line class="sec01" x1="420" y1="0" x2="420" y2="100.000" />
+<rect class="temp" x="420" y="65.45454859504103" width="19" height="34.54545140495897" />
+<line class="sec01" x1="440" y1="0" x2="440" y2="100.000" />
+<rect class="temp" x="440" y="65.45454859504103" width="19" height="34.54545140495897" />
+<line class="sec01" x1="460" y1="0" x2="460" y2="100.000" />
+<rect class="temp" x="460" y="65.45454859504103" width="19" height="34.54545140495897" />
+<line class="sec01" x1="480" y1="0" x2="480" y2="100.000" />
+<rect class="temp" x="480" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="500" y1="0" x2="500" y2="100.000" />
+<rect class="temp" x="500" y="65.45454859504103" width="19" height="34.54545140495897" />
+<line class="sec01" x1="520" y1="0" x2="520" y2="100.000" />
+<rect class="temp" x="520" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="540" y1="0" x2="540" y2="100.000" />
+<rect class="temp" x="540" y="66.36363942148732" width="19" height="33.63636057851268" />
+<line class="sec01" x1="560" y1="0" x2="560" y2="100.000" />
+<rect class="temp" x="560" y="65.45454859504103" width="19" height="34.54545140495897" />
+<line class="sec01" x1="580" y1="0" x2="580" y2="100.000" />
+<rect class="temp" x="580" y="65.45454859504103" width="19" height="34.54545140495897" />
+<line class="sec10" x1="580" y1="0" x2="580" y2="100.000"/><text class="sec" x="580" y="-5.000" >30</text>
+</g>
+
+<g transform="translate(10,1880)">
+<rect class="box" x="0.000" y="0" width="600" height="100.000" />
+<text class="t2" x="8" y="-20">cbc_amplifier_temp</text>
+<text class="t3" x="4" y="20">110000.0</text>
+<text class="t3" x="4" y="100">0</text>
+<line class="sec10" x1="0" y1="0" x2="0" y2="100.000"/><text class="sec" x="0" y="-5.000" >0</text>
+<line class="sec01" x1="0" y1="0" x2="0" y2="100.000" />
+<rect class="temp" x="0" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="20" y1="0" x2="20" y2="100.000" />
+<rect class="temp" x="20" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="40" y1="0" x2="40" y2="100.000" />
+<rect class="temp" x="40" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="60" y1="0" x2="60" y2="100.000" />
+<rect class="temp" x="60" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="80" y1="0" x2="80" y2="100.000" />
+<rect class="temp" x="80" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="100" y1="0" x2="100" y2="100.000" />
+<rect class="temp" x="100" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="120" y1="0" x2="120" y2="100.000" />
+<rect class="temp" x="120" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="140" y1="0" x2="140" y2="100.000" />
+<rect class="temp" x="140" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="160" y1="0" x2="160" y2="100.000" />
+<rect class="temp" x="160" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="180" y1="0" x2="180" y2="100.000" />
+<rect class="temp" x="180" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec10" x1="180" y1="0" x2="180" y2="100.000"/><text class="sec" x="180" y="-5.000" >10</text>
+<line class="sec01" x1="200" y1="0" x2="200" y2="100.000" />
+<rect class="temp" x="200" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="220" y1="0" x2="220" y2="100.000" />
+<rect class="temp" x="220" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="240" y1="0" x2="240" y2="100.000" />
+<rect class="temp" x="240" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="260" y1="0" x2="260" y2="100.000" />
+<rect class="temp" x="260" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="280" y1="0" x2="280" y2="100.000" />
+<rect class="temp" x="280" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="300" y1="0" x2="300" y2="100.000" />
+<rect class="temp" x="300" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="320" y1="0" x2="320" y2="100.000" />
+<rect class="temp" x="320" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="340" y1="0" x2="340" y2="100.000" />
+<rect class="temp" x="340" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="360" y1="0" x2="360" y2="100.000" />
+<rect class="temp" x="360" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="380" y1="0" x2="380" y2="100.000" />
+<rect class="temp" x="380" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec10" x1="380" y1="0" x2="380" y2="100.000"/><text class="sec" x="380" y="-5.000" >20</text>
+<line class="sec01" x1="400" y1="0" x2="400" y2="100.000" />
+<rect class="temp" x="400" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="420" y1="0" x2="420" y2="100.000" />
+<rect class="temp" x="420" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="440" y1="0" x2="440" y2="100.000" />
+<rect class="temp" x="440" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="460" y1="0" x2="460" y2="100.000" />
+<rect class="temp" x="460" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="480" y1="0" x2="480" y2="100.000" />
+<rect class="temp" x="480" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="500" y1="0" x2="500" y2="100.000" />
+<rect class="temp" x="500" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="520" y1="0" x2="520" y2="100.000" />
+<rect class="temp" x="520" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="540" y1="0" x2="540" y2="100.000" />
+<rect class="temp" x="540" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="560" y1="0" x2="560" y2="100.000" />
+<rect class="temp" x="560" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec01" x1="580" y1="0" x2="580" y2="100.000" />
+<rect class="temp" x="580" y="67.27273024793361" width="19" height="32.72726975206639" />
+<line class="sec10" x1="580" y1="0" x2="580" y2="100.000"/><text class="sec" x="580" y="-5.000" >30</text>
+</g>
+
+<g transform="translate(10,2040)">
+<rect class="box" x="0.000" y="0" width="600" height="100.000" />
+<text class="t2" x="8" y="-20">cbc_env_temp</text>
+<text class="t3" x="4" y="20">110000.0</text>
+<text class="t3" x="4" y="100">0</text>
+<line class="sec10" x1="0" y1="0" x2="0" y2="100.000"/><text class="sec" x="0" y="-5.000" >0</text>
+<line class="sec01" x1="0" y1="0" x2="0" y2="100.000" />
+<rect class="temp" x="0" y="40.90909628099124" width="19" height="59.09090371900876" />
+<line class="sec01" x1="20" y1="0" x2="20" y2="100.000" />
+<rect class="temp" x="20" y="40.90909628099124" width="19" height="59.09090371900876" />
+<line class="sec01" x1="40" y1="0" x2="40" y2="100.000" />
+<rect class="temp" x="40" y="40.90909628099124" width="19" height="59.09090371900876" />
+<line class="sec01" x1="60" y1="0" x2="60" y2="100.000" />
+<rect class="temp" x="60" y="40.90909628099124" width="19" height="59.09090371900876" />
+<line class="sec01" x1="80" y1="0" x2="80" y2="100.000" />
+<rect class="temp" x="80" y="40.90909628099124" width="19" height="59.09090371900876" />
+<line class="sec01" x1="100" y1="0" x2="100" y2="100.000" />
+<rect class="temp" x="100" y="54.54545867768557" width="19" height="45.45454132231443" />
+<line class="sec01" x1="120" y1="0" x2="120" y2="100.000" />
+<rect class="temp" x="120" y="54.54545867768557" width="19" height="45.45454132231443" />
+<line class="sec01" x1="140" y1="0" x2="140" y2="100.000" />
+<rect class="temp" x="140" y="54.54545867768557" width="19" height="45.45454132231443" />
+<line class="sec01" x1="160" y1="0" x2="160" y2="100.000" />
+<rect class="temp" x="160" y="54.54545867768557" width="19" height="45.45454132231443" />
+<line class="sec01" x1="180" y1="0" x2="180" y2="100.000" />
+<rect class="temp" x="180" y="54.54545867768557" width="19" height="45.45454132231443" />
+<line class="sec10" x1="180" y1="0" x2="180" y2="100.000"/><text class="sec" x="180" y="-5.000" >10</text>
+<line class="sec01" x1="200" y1="0" x2="200" y2="100.000" />
+<rect class="temp" x="200" y="40.90909628099124" width="19" height="59.09090371900876" />
+<line class="sec01" x1="220" y1="0" x2="220" y2="100.000" />
+<rect class="temp" x="220" y="40.90909628099124" width="19" height="59.09090371900876" />
+<line class="sec01" x1="240" y1="0" x2="240" y2="100.000" />
+<rect class="temp" x="240" y="40.90909628099124" width="19" height="59.09090371900876" />
+<line class="sec01" x1="260" y1="0" x2="260" y2="100.000" />
+<rect class="temp" x="260" y="40.90909628099124" width="19" height="59.09090371900876" />
+<line class="sec01" x1="280" y1="0" x2="280" y2="100.000" />
+<rect class="temp" x="280" y="40.90909628099124" width="19" height="59.09090371900876" />
+<line class="sec01" x1="300" y1="0" x2="300" y2="100.000" />
+<rect class="temp" x="300" y="54.54545867768557" width="19" height="45.45454132231443" />
+<line class="sec01" x1="320" y1="0" x2="320" y2="100.000" />
+<rect class="temp" x="320" y="54.54545867768557" width="19" height="45.45454132231443" />
+<line class="sec01" x1="340" y1="0" x2="340" y2="100.000" />
+<rect class="temp" x="340" y="54.54545867768557" width="19" height="45.45454132231443" />
+<line class="sec01" x1="360" y1="0" x2="360" y2="100.000" />
+<rect class="temp" x="360" y="54.54545867768557" width="19" height="45.45454132231443" />
+<line class="sec01" x1="380" y1="0" x2="380" y2="100.000" />
+<rect class="temp" x="380" y="54.54545867768557" width="19" height="45.45454132231443" />
+<line class="sec10" x1="380" y1="0" x2="380" y2="100.000"/><text class="sec" x="380" y="-5.000" >20</text>
+<line class="sec01" x1="400" y1="0" x2="400" y2="100.000" />
+<rect class="temp" x="400" y="40.90909628099124" width="19" height="59.09090371900876" />
+<line class="sec01" x1="420" y1="0" x2="420" y2="100.000" />
+<rect class="temp" x="420" y="40.90909628099124" width="19" height="59.09090371900876" />
+<line class="sec01" x1="440" y1="0" x2="440" y2="100.000" />
+<rect class="temp" x="440" y="40.90909628099124" width="19" height="59.09090371900876" />
+<line class="sec01" x1="460" y1="0" x2="460" y2="100.000" />
+<rect class="temp" x="460" y="40.90909628099124" width="19" height="59.09090371900876" />
+<line class="sec01" x1="480" y1="0" x2="480" y2="100.000" />
+<rect class="temp" x="480" y="40.90909628099124" width="19" height="59.09090371900876" />
+<line class="sec01" x1="500" y1="0" x2="500" y2="100.000" />
+<rect class="temp" x="500" y="54.54545867768557" width="19" height="45.45454132231443" />
+<line class="sec01" x1="520" y1="0" x2="520" y2="100.000" />
+<rect class="temp" x="520" y="54.54545867768557" width="19" height="45.45454132231443" />
+<line class="sec01" x1="540" y1="0" x2="540" y2="100.000" />
+<rect class="temp" x="540" y="54.54545867768557" width="19" height="45.45454132231443" />
+<line class="sec01" x1="560" y1="0" x2="560" y2="100.000" />
+<rect class="temp" x="560" y="54.54545867768557" width="19" height="45.45454132231443" />
+<line class="sec01" x1="580" y1="0" x2="580" y2="100.000" />
+<rect class="temp" x="580" y="54.54545867768557" width="19" height="45.45454132231443" />
+<line class="sec10" x1="580" y1="0" x2="580" y2="100.000"/><text class="sec" x="580" y="-5.000" >30</text>
+</g>
+
+<g transform="translate(10,2200)">
+<rect class="box" x="0.000" y="0" width="600" height="100.000" />
+<text class="t2" x="8" y="-20">cbc_ambient_temp</text>
+<text class="t3" x="4" y="20">110.0</text>
+<text class="t3" x="4" y="100">0</text>
+<line class="sec10" x1="0" y1="0" x2="0" y2="100.000"/><text class="sec" x="0" y="-5.000" >0</text>
+<line class="sec01" x1="0" y1="0" x2="0" y2="100.000" />
+<rect class="temp" x="0" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="20" y1="0" x2="20" y2="100.000" />
+<rect class="temp" x="20" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="40" y1="0" x2="40" y2="100.000" />
+<rect class="temp" x="40" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="60" y1="0" x2="60" y2="100.000" />
+<rect class="temp" x="60" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="80" y1="0" x2="80" y2="100.000" />
+<rect class="temp" x="80" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="100" y1="0" x2="100" y2="100.000" />
+<rect class="temp" x="100" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="120" y1="0" x2="120" y2="100.000" />
+<rect class="temp" x="120" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="140" y1="0" x2="140" y2="100.000" />
+<rect class="temp" x="140" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="160" y1="0" x2="160" y2="100.000" />
+<rect class="temp" x="160" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="180" y1="0" x2="180" y2="100.000" />
+<rect class="temp" x="180" y="100.0" width="19" height="0.0" />
+<line class="sec10" x1="180" y1="0" x2="180" y2="100.000"/><text class="sec" x="180" y="-5.000" >10</text>
+<line class="sec01" x1="200" y1="0" x2="200" y2="100.000" />
+<rect class="temp" x="200" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="220" y1="0" x2="220" y2="100.000" />
+<rect class="temp" x="220" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="240" y1="0" x2="240" y2="100.000" />
+<rect class="temp" x="240" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="260" y1="0" x2="260" y2="100.000" />
+<rect class="temp" x="260" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="280" y1="0" x2="280" y2="100.000" />
+<rect class="temp" x="280" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="300" y1="0" x2="300" y2="100.000" />
+<rect class="temp" x="300" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="320" y1="0" x2="320" y2="100.000" />
+<rect class="temp" x="320" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="340" y1="0" x2="340" y2="100.000" />
+<rect class="temp" x="340" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="360" y1="0" x2="360" y2="100.000" />
+<rect class="temp" x="360" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="380" y1="0" x2="380" y2="100.000" />
+<rect class="temp" x="380" y="100.0" width="19" height="0.0" />
+<line class="sec10" x1="380" y1="0" x2="380" y2="100.000"/><text class="sec" x="380" y="-5.000" >20</text>
+<line class="sec01" x1="400" y1="0" x2="400" y2="100.000" />
+<rect class="temp" x="400" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="420" y1="0" x2="420" y2="100.000" />
+<rect class="temp" x="420" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="440" y1="0" x2="440" y2="100.000" />
+<rect class="temp" x="440" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="460" y1="0" x2="460" y2="100.000" />
+<rect class="temp" x="460" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="480" y1="0" x2="480" y2="100.000" />
+<rect class="temp" x="480" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="500" y1="0" x2="500" y2="100.000" />
+<rect class="temp" x="500" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="520" y1="0" x2="520" y2="100.000" />
+<rect class="temp" x="520" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="540" y1="0" x2="540" y2="100.000" />
+<rect class="temp" x="540" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="560" y1="0" x2="560" y2="100.000" />
+<rect class="temp" x="560" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="580" y1="0" x2="580" y2="100.000" />
+<rect class="temp" x="580" y="100.0" width="19" height="0.0" />
+<line class="sec10" x1="580" y1="0" x2="580" y2="100.000"/><text class="sec" x="580" y="-5.000" >30</text>
+</g>
+
+<g transform="translate(10,2360)">
+<rect class="box" x="0.000" y="0" width="600" height="100.000" />
+<text class="t2" x="8" y="-20">Fan:c0</text>
+<text class="t3" x="4" y="20">1.0</text>
+<text class="t3" x="4" y="100">0</text>
+<line class="sec10" x1="0" y1="0" x2="0" y2="100.000"/><text class="sec" x="0" y="-5.000" >0</text>
+<line class="sec01" x1="0" y1="0" x2="0" y2="100.000" />
+<rect class="cooling" x="0" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="20" y1="0" x2="20" y2="100.000" />
+<rect class="cooling" x="20" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="40" y1="0" x2="40" y2="100.000" />
+<rect class="cooling" x="40" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="60" y1="0" x2="60" y2="100.000" />
+<rect class="cooling" x="60" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="80" y1="0" x2="80" y2="100.000" />
+<rect class="cooling" x="80" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="100" y1="0" x2="100" y2="100.000" />
+<rect class="cooling" x="100" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="120" y1="0" x2="120" y2="100.000" />
+<rect class="cooling" x="120" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="140" y1="0" x2="140" y2="100.000" />
+<rect class="cooling" x="140" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="160" y1="0" x2="160" y2="100.000" />
+<rect class="cooling" x="160" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="180" y1="0" x2="180" y2="100.000" />
+<rect class="cooling" x="180" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec10" x1="180" y1="0" x2="180" y2="100.000"/><text class="sec" x="180" y="-5.000" >10</text>
+<line class="sec01" x1="200" y1="0" x2="200" y2="100.000" />
+<rect class="cooling" x="200" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="220" y1="0" x2="220" y2="100.000" />
+<rect class="cooling" x="220" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="240" y1="0" x2="240" y2="100.000" />
+<rect class="cooling" x="240" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="260" y1="0" x2="260" y2="100.000" />
+<rect class="cooling" x="260" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="280" y1="0" x2="280" y2="100.000" />
+<rect class="cooling" x="280" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="300" y1="0" x2="300" y2="100.000" />
+<rect class="cooling" x="300" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="320" y1="0" x2="320" y2="100.000" />
+<rect class="cooling" x="320" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="340" y1="0" x2="340" y2="100.000" />
+<rect class="cooling" x="340" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="360" y1="0" x2="360" y2="100.000" />
+<rect class="cooling" x="360" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="380" y1="0" x2="380" y2="100.000" />
+<rect class="cooling" x="380" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec10" x1="380" y1="0" x2="380" y2="100.000"/><text class="sec" x="380" y="-5.000" >20</text>
+<line class="sec01" x1="400" y1="0" x2="400" y2="100.000" />
+<rect class="cooling" x="400" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="420" y1="0" x2="420" y2="100.000" />
+<rect class="cooling" x="420" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="440" y1="0" x2="440" y2="100.000" />
+<rect class="cooling" x="440" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="460" y1="0" x2="460" y2="100.000" />
+<rect class="cooling" x="460" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="480" y1="0" x2="480" y2="100.000" />
+<rect class="cooling" x="480" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="500" y1="0" x2="500" y2="100.000" />
+<rect class="cooling" x="500" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="520" y1="0" x2="520" y2="100.000" />
+<rect class="cooling" x="520" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="540" y1="0" x2="540" y2="100.000" />
+<rect class="cooling" x="540" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="560" y1="0" x2="560" y2="100.000" />
+<rect class="cooling" x="560" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec01" x1="580" y1="0" x2="580" y2="100.000" />
+<rect class="cooling" x="580" y="0.9900990099009874" width="19" height="99.00990099009901" />
+<line class="sec10" x1="580" y1="0" x2="580" y2="100.000"/><text class="sec" x="580" y="-5.000" >30</text>
+</g>
+
+<g transform="translate(10,2520)">
+<rect class="box" x="0.000" y="0" width="600" height="100.000" />
+<text class="t2" x="8" y="-20">cdev_cpu_0</text>
+<text class="t3" x="4" y="20">3.0</text>
+<text class="t3" x="4" y="100">0</text>
+<line class="sec10" x1="0" y1="0" x2="0" y2="100.000"/><text class="sec" x="0" y="-5.000" >0</text>
+<line class="sec01" x1="0" y1="0" x2="0" y2="100.000" />
+<rect class="cooling" x="0" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="20" y1="0" x2="20" y2="100.000" />
+<rect class="cooling" x="20" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="40" y1="0" x2="40" y2="100.000" />
+<rect class="cooling" x="40" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="60" y1="0" x2="60" y2="100.000" />
+<rect class="cooling" x="60" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="80" y1="0" x2="80" y2="100.000" />
+<rect class="cooling" x="80" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="100" y1="0" x2="100" y2="100.000" />
+<rect class="cooling" x="100" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="120" y1="0" x2="120" y2="100.000" />
+<rect class="cooling" x="120" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="140" y1="0" x2="140" y2="100.000" />
+<rect class="cooling" x="140" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="160" y1="0" x2="160" y2="100.000" />
+<rect class="cooling" x="160" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="180" y1="0" x2="180" y2="100.000" />
+<rect class="cooling" x="180" y="100.0" width="19" height="0.0" />
+<line class="sec10" x1="180" y1="0" x2="180" y2="100.000"/><text class="sec" x="180" y="-5.000" >10</text>
+<line class="sec01" x1="200" y1="0" x2="200" y2="100.000" />
+<rect class="cooling" x="200" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="220" y1="0" x2="220" y2="100.000" />
+<rect class="cooling" x="220" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="240" y1="0" x2="240" y2="100.000" />
+<rect class="cooling" x="240" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="260" y1="0" x2="260" y2="100.000" />
+<rect class="cooling" x="260" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="280" y1="0" x2="280" y2="100.000" />
+<rect class="cooling" x="280" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="300" y1="0" x2="300" y2="100.000" />
+<rect class="cooling" x="300" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="320" y1="0" x2="320" y2="100.000" />
+<rect class="cooling" x="320" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="340" y1="0" x2="340" y2="100.000" />
+<rect class="cooling" x="340" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="360" y1="0" x2="360" y2="100.000" />
+<rect class="cooling" x="360" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="380" y1="0" x2="380" y2="100.000" />
+<rect class="cooling" x="380" y="100.0" width="19" height="0.0" />
+<line class="sec10" x1="380" y1="0" x2="380" y2="100.000"/><text class="sec" x="380" y="-5.000" >20</text>
+<line class="sec01" x1="400" y1="0" x2="400" y2="100.000" />
+<rect class="cooling" x="400" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="420" y1="0" x2="420" y2="100.000" />
+<rect class="cooling" x="420" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="440" y1="0" x2="440" y2="100.000" />
+<rect class="cooling" x="440" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="460" y1="0" x2="460" y2="100.000" />
+<rect class="cooling" x="460" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="480" y1="0" x2="480" y2="100.000" />
+<rect class="cooling" x="480" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="500" y1="0" x2="500" y2="100.000" />
+<rect class="cooling" x="500" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="520" y1="0" x2="520" y2="100.000" />
+<rect class="cooling" x="520" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="540" y1="0" x2="540" y2="100.000" />
+<rect class="cooling" x="540" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="560" y1="0" x2="560" y2="100.000" />
+<rect class="cooling" x="560" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="580" y1="0" x2="580" y2="100.000" />
+<rect class="cooling" x="580" y="100.0" width="19" height="0.0" />
+<line class="sec10" x1="580" y1="0" x2="580" y2="100.000"/><text class="sec" x="580" y="-5.000" >30</text>
+</g>
+
+<g transform="translate(10,2680)">
+<rect class="box" x="0.000" y="0" width="600" height="100.000" />
+<text class="t2" x="8" y="-20">cbc_fan0</text>
+<text class="t3" x="4" y="20">100.0</text>
+<text class="t3" x="4" y="100">0</text>
+<line class="sec10" x1="0" y1="0" x2="0" y2="100.000"/><text class="sec" x="0" y="-5.000" >0</text>
+<line class="sec01" x1="0" y1="0" x2="0" y2="100.000" />
+<rect class="cooling" x="0" y="65.003499650035" width="19" height="34.996500349965004" />
+<line class="sec01" x1="20" y1="0" x2="20" y2="100.000" />
+<rect class="cooling" x="20" y="0.009999000099995214" width="19" height="99.9900009999" />
+<line class="sec01" x1="40" y1="0" x2="40" y2="100.000" />
+<rect class="cooling" x="40" y="0.009999000099995214" width="19" height="99.9900009999" />
+<line class="sec01" x1="60" y1="0" x2="60" y2="100.000" />
+<rect class="cooling" x="60" y="0.009999000099995214" width="19" height="99.9900009999" />
+<line class="sec01" x1="80" y1="0" x2="80" y2="100.000" />
+<rect class="cooling" x="80" y="0.009999000099995214" width="19" height="99.9900009999" />
+<line class="sec01" x1="100" y1="0" x2="100" y2="100.000" />
+<rect class="cooling" x="100" y="0.009999000099995214" width="19" height="99.9900009999" />
+<line class="sec01" x1="120" y1="0" x2="120" y2="100.000" />
+<rect class="cooling" x="120" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="140" y1="0" x2="140" y2="100.000" />
+<rect class="cooling" x="140" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="160" y1="0" x2="160" y2="100.000" />
+<rect class="cooling" x="160" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="180" y1="0" x2="180" y2="100.000" />
+<rect class="cooling" x="180" y="100.0" width="19" height="0.0" />
+<line class="sec10" x1="180" y1="0" x2="180" y2="100.000"/><text class="sec" x="180" y="-5.000" >10</text>
+<line class="sec01" x1="200" y1="0" x2="200" y2="100.000" />
+<rect class="cooling" x="200" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="220" y1="0" x2="220" y2="100.000" />
+<rect class="cooling" x="220" y="0.009999000099995214" width="19" height="99.9900009999" />
+<line class="sec01" x1="240" y1="0" x2="240" y2="100.000" />
+<rect class="cooling" x="240" y="0.009999000099995214" width="19" height="99.9900009999" />
+<line class="sec01" x1="260" y1="0" x2="260" y2="100.000" />
+<rect class="cooling" x="260" y="0.009999000099995214" width="19" height="99.9900009999" />
+<line class="sec01" x1="280" y1="0" x2="280" y2="100.000" />
+<rect class="cooling" x="280" y="0.009999000099995214" width="19" height="99.9900009999" />
+<line class="sec01" x1="300" y1="0" x2="300" y2="100.000" />
+<rect class="cooling" x="300" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="320" y1="0" x2="320" y2="100.000" />
+<rect class="cooling" x="320" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="340" y1="0" x2="340" y2="100.000" />
+<rect class="cooling" x="340" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="360" y1="0" x2="360" y2="100.000" />
+<rect class="cooling" x="360" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="380" y1="0" x2="380" y2="100.000" />
+<rect class="cooling" x="380" y="100.0" width="19" height="0.0" />
+<line class="sec10" x1="380" y1="0" x2="380" y2="100.000"/><text class="sec" x="380" y="-5.000" >20</text>
+<line class="sec01" x1="400" y1="0" x2="400" y2="100.000" />
+<rect class="cooling" x="400" y="0.009999000099995214" width="19" height="99.9900009999" />
+<line class="sec01" x1="420" y1="0" x2="420" y2="100.000" />
+<rect class="cooling" x="420" y="0.009999000099995214" width="19" height="99.9900009999" />
+<line class="sec01" x1="440" y1="0" x2="440" y2="100.000" />
+<rect class="cooling" x="440" y="0.009999000099995214" width="19" height="99.9900009999" />
+<line class="sec01" x1="460" y1="0" x2="460" y2="100.000" />
+<rect class="cooling" x="460" y="0.009999000099995214" width="19" height="99.9900009999" />
+<line class="sec01" x1="480" y1="0" x2="480" y2="100.000" />
+<rect class="cooling" x="480" y="0.009999000099995214" width="19" height="99.9900009999" />
+<line class="sec01" x1="500" y1="0" x2="500" y2="100.000" />
+<rect class="cooling" x="500" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="520" y1="0" x2="520" y2="100.000" />
+<rect class="cooling" x="520" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="540" y1="0" x2="540" y2="100.000" />
+<rect class="cooling" x="540" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="560" y1="0" x2="560" y2="100.000" />
+<rect class="cooling" x="560" y="100.0" width="19" height="0.0" />
+<line class="sec01" x1="580" y1="0" x2="580" y2="100.000" />
+<rect class="cooling" x="580" y="100.0" width="19" height="0.0" />
+<line class="sec10" x1="580" y1="0" x2="580" y2="100.000"/><text class="sec" x="580" y="-5.000" >30</text>
+</g>
+
+</svg>
