@@ -334,6 +334,9 @@ void *cbc_wakeup_reason_thread(void *arg)
 	while (1) {
 		len = cbc_read_data(cbc_lifecycle_fd, (uint8_t *)&data, sizeof(data));
 		if (len > 0) {
+			if (data.header == 6) { // TODO: handle logic mode value
+				continue;
+			}
 			if (data.header != 1) {
 				fprintf(stderr, "received wrong wakeup reason");
 				continue;
