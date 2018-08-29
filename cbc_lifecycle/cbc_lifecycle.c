@@ -537,6 +537,7 @@ static int send_acrnd_stop(void)
 	ret = mngr_send_msg(acrnd_fd, &req, &ack, 2);
 	if (ret > 0)
 		fprintf(stderr, "result %d\n", ack.data.err);
+	mngr_close(acrnd_fd);
 	return ret;
 }
 
