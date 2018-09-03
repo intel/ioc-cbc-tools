@@ -597,6 +597,14 @@ no_match_file:
 
 static void sigterm_suppress(int sig)
 {
+	if (!system("systemctl list-jobs reboot.target | grep reboot")) {//reboot
+		cbc_send_data(cbc_lifecycle_fd, cbc_heartbeat_reboot,
+			sizeof(cbc_heartbeat_reboot));
+		exit(0);
+	}
+	if (!system("systemctl list-jobs poweroff.target | grep poweroff")) {//shutdown
+		exit(0);
+	}
 	cbc_send_data(cbc_lifecycle_fd, cbc_suppress_heartbeat_30min,
 			sizeof(cbc_suppress_heartbeat_30min));
 	exit(0);
