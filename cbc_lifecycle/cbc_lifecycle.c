@@ -546,7 +546,7 @@ static void handle_stop(struct mngr_msg *msg, int client_fd, void *param)
 {
 	struct mngr_msg *req = (void *)msg;
 	struct mngr_msg ack;
-	static struct mngr_msg req_p = {
+	struct mngr_msg req_p = {
 		.magic = MNGR_MSG_MAGIC,
 	};
 
