@@ -1,5 +1,7 @@
 [Unit]
 Description=CBC lifecycle service
+Requisite=cbc_attach.service
+After=cbc_attach.service
 
 [Service]
 Type=simple
