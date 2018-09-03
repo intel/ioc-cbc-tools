@@ -603,6 +603,8 @@ static void sigterm_suppress(int sig)
 		exit(0);
 	}
 	if (!system("systemctl list-jobs poweroff.target | grep poweroff")) {//shutdown
+		cbc_send_data(cbc_lifecycle_fd, cbc_heartbeat_shutdown,
+			sizeof(cbc_heartbeat_shutdown));
 		exit(0);
 	}
 	cbc_send_data(cbc_lifecycle_fd, cbc_suppress_heartbeat_30min,
