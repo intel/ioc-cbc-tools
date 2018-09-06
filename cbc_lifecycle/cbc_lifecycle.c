@@ -83,7 +83,7 @@ char valid_map[S_MAX][S_MAX] = {
 	{ 1, 1, 1, 0, 0, 0, 0, 0 }, /* default can go alive or shutdown */
 	{ 0, 1, 1, 0, 1, 0, 1, 1 }, /* alive can go S_ACRND_* state */
 	{ 0, 0, 1, 1, 1, 1, 1, 1 }, /* shutdown can go upper states */
-	{ 0, 0, 0, 1, 1, 1, 1, 1 }, /* delay can go upper states */
+	{ 1, 0, 0, 1, 1, 1, 1, 1 }, /* delay can go upper states, or default (shutdown refuse) */
 	{ 0, 0, 0, 0, 1, 1, 0, 0 }, /* acrnd shutdown can go ioc_shutdown */
 	{ 1, 0, 0, 0, 0, 1, 0, 0 }, /* ioc_shutdown can go default (s3 case) */
 	{ 0, 0, 0, 0, 0, 1, 1, 0 }, /* acrnd_reboot can only go ioc_shutdown */
@@ -279,8 +279,10 @@ void *cbc_heartbeat_loop(void)
 			/* when ACRND detects our off request, we must wait if
 			 * UOS really accept the requst, thus we send shutdown
 			 * delay */
-			send_acrnd_stop();
 			cur_state = state_transit(S_SHUTDOWN_DELAY);
+			if (cur_state != S_SHUTDOWN_DELAY)// race condition !
+				break;
+			send_acrnd_stop();
 			// falling through
 		case S_SHUTDOWN_DELAY:
 			heartbeat = cbc_heartbeat_shutdown_delay;
@@ -368,8 +370,13 @@ static void handle_shutdown(struct mngr_msg *msg, int client_fd, void *param)
 	ack.timestamp = msg->timestamp;
 	ack.data.err = 0;
 
-	fprintf(stderr, "acrnd agreed to shutdown\n");
-	state_transit(S_ACRND_SHUTDOWN);
+	if (msg->data.err) {
+		fprintf(stderr, "acrnd refuse to shutdown\n");
+		state_transit(S_DEFAULT);// wakeup reason will override this anyway
+	} else {
+		fprintf(stderr, "acrnd agreed to shutdown\n");
+		state_transit(S_ACRND_SHUTDOWN);
+	}
 	sem_post(&event_sema);
 	mngr_send_msg(client_fd, &ack, NULL, 0);
 }
@@ -383,7 +390,13 @@ static void handle_suspend(struct mngr_msg *msg, int client_fd, void *param)
 	ack.timestamp = msg->timestamp;
 	ack.data.err = 0;
 
-	state_transit(S_ACRND_SUSPEND);
+	if (msg->data.err) {
+		fprintf(stderr, "acrnd refuse to suspend\n");
+		state_transit(S_DEFAULT);// wakeup reason will override this anyway
+	} else {
+		fprintf(stderr, "acrnd agreed to suspend\n");
+		state_transit(S_ACRND_SUSPEND);
+	}
 	sem_post(&event_sema);
 	mngr_send_msg(client_fd, &ack, NULL, 0);
 }
@@ -395,10 +408,15 @@ static void handle_reboot(struct mngr_msg *msg, int client_fd, void *param)
 	ack.magic = MNGR_MSG_MAGIC;
 	ack.msgid = msg->msgid;
 	ack.timestamp = msg->timestamp;
-
 	ack.data.err = 0;
 
-	state_transit(S_ACRND_REBOOT);
+	if (msg->data.err) {
+		fprintf(stderr, "acrnd refuse to reboot\n");
+		state_transit(S_DEFAULT);// wakeup reason will override this anyway
+	} else {
+		fprintf(stderr, "acrnd agreed to reboot\n");
+		state_transit(S_ACRND_REBOOT);
+	}
 	sem_post(&event_sema);
 	mngr_send_msg(client_fd, &ack, NULL, 0);
 }
