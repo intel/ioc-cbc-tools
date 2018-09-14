@@ -254,24 +254,43 @@ state_machine_t state_transit(state_machine_t new)
 static int send_acrnd_stop(void);
 static int send_acrnd_start(void);
 
+#define RETRY_CNT 5
 void *cbc_heartbeat_loop(void)
 {
 	struct timespec ts;
 	state_machine_t last_state = S_DEFAULT;
 	const int p_size = sizeof(cbc_heartbeat_init);
+	int start_retry = 0;
+	int stop_retry = 0;
+	int default_cnt = 0;
+
 	cbc_send_data(cbc_lifecycle_fd, cbc_heartbeat_init, p_size);
 	fprintf(stderr, "send heartbeat init\n");
+
 	while (1) {
-		char *heartbeat;
+		char *heartbeat = NULL;
 		state_machine_t cur_state = get_state();
 
 		switch (cur_state) {
 		case S_DEFAULT:
-			heartbeat = NULL;
+			if (last_state != S_DEFAULT)
+				default_cnt = 0;
+			if (default_cnt++) {
+				heartbeat = cbc_heartbeat_init;
+				fprintf(stderr, "send heartbeat init\n");
+			}
+			start_retry = 0;
 			break;
 		case S_ALIVE:
-			if (last_state != S_ALIVE) {
-				send_acrnd_start();
+			if ((last_state != S_ALIVE) || (start_retry > 0)) {
+				if (send_acrnd_start() == -1) {
+					if (!start_retry)
+						start_retry = RETRY_CNT;
+					else
+						start_retry--;
+				} else {
+					start_retry = 0;
+				}
 			}
 			heartbeat = cbc_heartbeat_active;
 			break;
@@ -282,9 +301,24 @@ void *cbc_heartbeat_loop(void)
 			cur_state = state_transit(S_SHUTDOWN_DELAY);
 			if (cur_state != S_SHUTDOWN_DELAY)// race condition !
 				break;
-			send_acrnd_stop();
+			if (send_acrnd_stop() == -1)
+				stop_retry = RETRY_CNT;
+			else
+				stop_retry = 0;
 			// falling through
 		case S_SHUTDOWN_DELAY:
+			if (stop_retry > 0) {
+				if (send_acrnd_stop() == -1) {
+					stop_retry--;
+					if (!stop_retry) {
+						fprintf(stderr, "no one handle our stop request, assume suspend\n");
+						state_transit(S_ACRND_SUSPEND);
+						continue;
+					}
+				} else {
+					stop_retry = 0;
+				}
+			}
 			heartbeat = cbc_heartbeat_shutdown_delay;
 			break;
 		case S_ACRND_SHUTDOWN:
@@ -309,9 +343,7 @@ void *cbc_heartbeat_loop(void)
 				}
 				system("echo mem > /sys/power/state");
 			}
-			cur_state = state_transit(S_DEFAULT);// for s3 case
-			//no heartbeat sent from now
-			heartbeat = NULL;
+			state_transit(S_DEFAULT);// for s3 case
 			break;
 		}
 		if (heartbeat) {
