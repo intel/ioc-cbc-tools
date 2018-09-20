@@ -1,0 +1,14 @@
+/*
+
+*/
+/**
+ * @file
+ */
+
+#define CBC_VERSION_MAJOR 
+#define CBC_VERSION_MINOR 
+#define CBC_VERSION_REVISION 
+
+#define VERSION_STRING "${CBC_VERSION_MAJOR}.${CBC_VERSION_MINOR}.${CBC_VERSION_REVISION}"
+
+
