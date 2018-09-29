@@ -341,7 +341,7 @@ void *cbc_heartbeat_loop(void)
 						cbc_heartbeat_rtc, p_size);
 					cbc_rtc_set = 0;
 				}
-				system("echo mem > /sys/power/state");
+				system("systemctl suspend");
 			}
 			state_transit(S_DEFAULT);// for s3 case
 			break;
