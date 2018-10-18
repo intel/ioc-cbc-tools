@@ -135,6 +135,7 @@ static int cbc_rtc_set;
 static int cbc_lifecycle_fd = -1;
 
 static int wakeup_reason;
+static int up_wakeup_reason;
 
 static void wait_for_device(const char *dev_name)
 {
@@ -282,6 +283,8 @@ void *cbc_heartbeat_loop(void)
 			start_retry = 0;
 			break;
 		case S_ALIVE:
+			if (last_state != S_ALIVE)
+				up_wakeup_reason = wakeup_reason;
 			if ((last_state != S_ALIVE) || (start_retry > 0)) {
 				if (send_acrnd_start() == -1) {
 					if (!start_retry)
@@ -344,6 +347,7 @@ void *cbc_heartbeat_loop(void)
 				system("systemctl suspend");
 			}
 			state_transit(S_DEFAULT);// for s3 case
+			up_wakeup_reason = 0; // reset up wakeup reason
 			break;
 		}
 		if (heartbeat) {
@@ -461,7 +465,7 @@ static void handle_wakeup_reason(struct mngr_msg *msg, int client_fd, void *para
 	ack.msgid = msg->msgid;
 	ack.timestamp = msg->timestamp;
 
-	ack.data.reason = wakeup_reason;
+	ack.data.reason = up_wakeup_reason;
 	mngr_send_msg(client_fd, &ack, NULL, 0);
 }
 
