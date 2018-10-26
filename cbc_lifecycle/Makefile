@@ -2,7 +2,7 @@
 OUT_DIR ?= .
 
 $(OUT_DIR)/cbc_lifecycle: cbc_lifecycle.c
-	gcc -o $@ cbc_lifecycle.c -pthread -lacrn-mngr
+	gcc -o $@ $(CFLAGS) $(LDFLAGS) cbc_lifecycle.c -pthread -lacrn-mngr
 
 clean:
 	rm $(OUT_DIR)/cbc_lifecycle

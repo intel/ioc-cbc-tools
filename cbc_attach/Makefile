@@ -1,7 +1,7 @@
 OUT_DIR ?= .
 
 all:
-	gcc -o $(OUT_DIR)/cbc_attach cbc_attach.c
+	gcc -o $(OUT_DIR)/cbc_attach $(CFLAGS) $(LDFLAGS) cbc_attach.c
 
 clean:
 	rm -rf $(OUT_DIR)/cbc_attach
