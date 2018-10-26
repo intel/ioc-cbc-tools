@@ -113,18 +113,17 @@ typedef struct {
 typedef pthread_t cbc_thread_t;
 typedef void* (*cbc_thread_func_t)(void *arg);
 
-/* cbc suppress heartbeat is not used so far, keep here for future use */
-static char cbc_suppress_heartbeat_1min[] =	{0x04, 0x60, 0xEA, 0x00};
+//static char cbc_suppress_heartbeat_1min[] =	{0x04, 0x60, 0xEA, 0x00};
 static char cbc_suppress_heartbeat_5min[] =	{0x04, 0xE0, 0x93, 0x04};
-static char cbc_suppress_heartbeat_10min[] =	{0x04, 0xC0, 0x27, 0x09};
+//static char cbc_suppress_heartbeat_10min[] =	{0x04, 0xC0, 0x27, 0x09};
 static char cbc_suppress_heartbeat_30min[] =	{0x04, 0x40, 0x77, 0x1B};
 static char cbc_heartbeat_shutdown[] =		{0x02, 0x00, 0x01, 0x00};
 static char cbc_heartbeat_reboot[] =		{0x02, 0x00, 0x02, 0x00};
 /* hearbeat shutdown ignore number is not used so far for non-native case */
-static char cbc_heartbeat_shutdown_ignore_1[] =	{0x02, 0x00, 0x03, 0x00};
-static char cbc_heartbeat_reboot_ignore_1[] =	{0x02, 0x00, 0x04, 0x00};
-static char cbc_heartbeat_shutdown_ignore_2[] =	{0x02, 0x00, 0x05, 0x00};
-static char cbc_heartbeat_reboot_ignore_2[] =	{0x02, 0x00, 0x06, 0x00};
+//static char cbc_heartbeat_shutdown_ignore_1[] =	{0x02, 0x00, 0x03, 0x00};
+//static char cbc_heartbeat_reboot_ignore_1[] =	{0x02, 0x00, 0x04, 0x00};
+//static char cbc_heartbeat_shutdown_ignore_2[] =	{0x02, 0x00, 0x05, 0x00};
+//static char cbc_heartbeat_reboot_ignore_2[] =	{0x02, 0x00, 0x06, 0x00};
 static char cbc_heartbeat_s3[] =		{0x02, 0x00, 0x07, 0x00};
 static char cbc_heartbeat_active[] =		{0x02, 0x01, 0x00, 0x00};
 static char cbc_heartbeat_shutdown_delay[] =	{0x02, 0x02, 0x00, 0x00};
@@ -264,6 +263,7 @@ void *cbc_heartbeat_loop(void)
 	int start_retry = 0;
 	int stop_retry = 0;
 	int default_cnt = 0;
+	int system_rc = 0;
 
 	cbc_send_data(cbc_lifecycle_fd, cbc_heartbeat_init, p_size);
 	fprintf(stderr, "send heartbeat init\n");
@@ -335,19 +335,23 @@ void *cbc_heartbeat_loop(void)
 			break;
 		case S_IOC_SHUTDOWN:
 			if (last_state == S_ACRND_SHUTDOWN) {
-				system("shutdown 0");
+				system_rc = system("shutdown 0");
 			} else if (last_state == S_ACRND_REBOOT) {
-				system("reboot");
+				system_rc = system("reboot");
 			} else if (last_state == S_ACRND_SUSPEND) {
 				if (cbc_rtc_set) {
 					cbc_send_data(cbc_lifecycle_fd,
 						cbc_heartbeat_rtc, p_size);
 					cbc_rtc_set = 0;
 				}
-				system("systemctl suspend");
+				system_rc = system("systemctl suspend");
 			}
+			fprintf(stderr, "shutdown exec rc %d\n", system_rc);
 			state_transit(S_DEFAULT);// for s3 case
 			up_wakeup_reason = 0; // reset up wakeup reason
+			break;
+		default:
+			fprintf(stderr, "unknow state\n");
 			break;
 		}
 		if (heartbeat) {
@@ -370,7 +374,7 @@ void *cbc_wakeup_reason_thread(void *arg)
 	int len;
 
 	while (1) {
-		len = cbc_read_data(cbc_lifecycle_fd, (uint8_t *)&data, sizeof(data));
+		len = cbc_read_data(cbc_lifecycle_fd, (char *)&data, sizeof(data));
 		if (len > 0) {
 			if (data.header == 6) { // TODO: handle logic mode value
 				continue;
