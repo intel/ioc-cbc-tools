@@ -1,8 +1,10 @@
-/*
-
-*/
-/**
+/* Copyright (C) 2018 Intel Corporation
+ * SPDX-License-Identifier: BSD-3-Clause
+ *
  * @file
+ *
+ * Retrieves fw, bootloader version and boot timestamps from AIOC
+ * 
  */
 
 #define CBC_VERSION_MAJOR 

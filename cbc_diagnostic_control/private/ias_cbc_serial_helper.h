@@ -1,9 +1,12 @@
-/*
-@COPYRIGHT_TAG@
-*/
-/**
+/* Copyright (C) 2018 Intel Corporation
+ * SPDX-License-Identifier: BSD-3-Clause
+ *
  * @file
+ *
+ * Retrieves fw, bootloader version and boot timestamps from AIOC
+ * 
  */
+
 #ifndef VEHICLEBUS_CBCCORE_CBCSERIALHELPER_H
 #define VEHICLEBUS_CBCCORE_CBCSERIALHELPER_H
 

@@ -1,8 +1,10 @@
-/*
- @COPYRIGHT_TAG@
- */
-/**
+/* Copyright (C) 2018 Intel Corporation
+ * SPDX-License-Identifier: BSD-3-Clause
+ *
  * @file
+ *
+ * Retrieves fw, bootloader version and boot timestamps from AIOC
+ * 
  */
 
 #include <errno.h>
@@ -28,6 +30,13 @@ uint64_t abl_start_timestamp = 0;
 #define CBC_DLT_DEVICE "/dev/cbc-dlt"
 
 #define CBC_DEBUG_VERSION_REQUEST (4)
+
+#ifdef NDEBUG
+#define DEBUG_PRINT(fmt, args...)   /* Don't do anything in release builds */
+#else
+#define DEBUG_PRINT(fmt, args...)  fprintf(stderr, fmt, ##args)
+#endif
+
 
 struct pollfd pollTable[2];
 
@@ -92,9 +101,9 @@ void cbc_diagnostic_print_payload(uint8_t * buffer, size_t buflen)
   {
     for (size_t j = 0; i < buflen && j < 8; ++i, ++j)
     {
-      printf("%02x ", buffer[i]);
+      DEBUG_PRINT("%02x ", buffer[i]);
     }
-    printf("\n");
+    DEBUG_PRINT("\n");
   }
 }
 
@@ -157,19 +166,22 @@ int cbc_diagnostic_send_request(uint8_t verbose, uint8_t output_selection, uint8
   uint8_t const payload_size = 1u;
   uint8_t success = -1;
 
-  printf("cbc_diagnostic_send_request os %u bs %u fd 0 %d fd 1 %d\n", output_selection, boot_timestamps_flag,
-         pollTable[0].fd, pollTable[1].fd);
+  if (verbose)
+    DEBUG_PRINT("cbc_diagnostic_send_request os %u bs %u fd 0 %d fd 1 %d\n", 
+    		output_selection, boot_timestamps_flag,
+         	pollTable[0].fd, pollTable[1].fd);
 
   if (output_selection != eIasPrintFlagNone && pollTable[0].fd > 0)
   {
     uint8_t frame_buffer[32u]; /* assert(frame_size < sizeof(frame_buffer) */
     frame_buffer[0U] = CBC_DEBUG_VERSION_REQUEST;
 
-    printf("output_selection flag %u\n", output_selection);
+    if (verbose)
+      DEBUG_PRINT("output_selection flag %u\n", output_selection);
 
     if (verbose)
     {
-      printf("Sending out version request:\n");
+      DEBUG_PRINT("Sending out version request:\n");
       cbc_diagnostic_print_payload(frame_buffer, 1);
     }
 
@@ -182,7 +194,7 @@ int cbc_diagnostic_send_request(uint8_t verbose, uint8_t output_selection, uint8
 
     if (verbose)
     {
-      printf("Diag. data successfully sent\n");
+      DEBUG_PRINT("Diag. data successfully sent\n");
     }
     success = 0;
   }
@@ -193,14 +205,15 @@ int cbc_diagnostic_send_request(uint8_t verbose, uint8_t output_selection, uint8
     uint8_t frame_buffer[32u]; /* assert(frame_size < sizeof(frame_buffer) */
     frame_buffer[0U] = 255;
 
-    printf("boot_timestamps_flag %u\n", boot_timestamps_flag);
+    if (verbose)
+      DEBUG_PRINT("boot_timestamps_flag %u\n", boot_timestamps_flag);
 
     if (output_selection != eIasPrintFlagNone)
       usleep(100000);
 
     if (verbose)
     {
-      printf("Sending out timestamps request:\n");
+      DEBUG_PRINT("Sending out timestamps request:\n");
       cbc_diagnostic_print_payload(frame_buffer, 1);
     }
 
@@ -213,7 +226,7 @@ int cbc_diagnostic_send_request(uint8_t verbose, uint8_t output_selection, uint8
 
     if (verbose)
     {
-      printf("Dlt Data successfully sent\n");
+      DEBUG_PRINT("Dlt Data successfully sent\n");
     }
     success = 0;
   }
@@ -254,9 +267,11 @@ int cbc_diagnostic_receive_answer(uint8_t verbose, uint8_t output_flags, uint8_t
     if (output_flags != eIasPrintFlagNone && (pollTable[0].revents & POLLIN))
     {
       read_chars = read(pollTable[0].fd, buffer, sizeof(buffer));
-      printf("diag received data sz  %zu\n", read_chars);
       if (verbose)
+      {
+        DEBUG_PRINT("diag received data sz  %zu\n", read_chars);
         cbc_diagnostic_print_payload(buffer, (size_t) (read_chars));
+      }
 
       bptr = buffer;
       cbc_diagnostic_print_version(++bptr, read_chars, output_flags);
@@ -268,13 +283,15 @@ int cbc_diagnostic_receive_answer(uint8_t verbose, uint8_t output_flags, uint8_t
       do
       {
         read_chars2 = read(pollTable[1].fd, buffer2, sizeof(buffer2));
-        printf("dlt received data sz  %zu\n", read_chars2);
         if (read_chars2 < 0)
           printf("Read all frames? %d\n", errno);
         else
         {
           if (verbose)
+	  {
+            DEBUG_PRINT("dlt received data sz  %zu\n", read_chars2);
             cbc_diagnostic_print_payload(buffer2, (size_t) (read_chars2));
+          }
 
           bptr = buffer2;
           cbc_parse_timestamp(++bptr, file);

@@ -13,6 +13,9 @@ include ( GNUInstallDirs )
 set(EXECUTABLE_OUTPUT_PATH usr/${CMAKE_INSTALL_BINDIR})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -z noexecstack -z now -pie")
+
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(DLTCPP REQUIRED automotive-dlt-c++)
@@ -25,7 +28,7 @@ set(PROJECT_SOURCE_LIST
 
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCE_LIST})
 
-target_compile_options(${PROJECT_NAME} PRIVATE)
+target_compile_options(${PROJECT_NAME} PRIVATE -fstack-protector-strong -fPIE -pie -fPIC -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security)
 
 target_include_directories(${PROJECT_NAME}
   PUBLIC

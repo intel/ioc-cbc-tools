@@ -43,6 +43,7 @@ int main(int argc, char *argv[])
   }
 
   run_logging_service(&options);
+  return 0;
 }
 
 int convert_file(CbcLoggingServiceControlOptions * options)

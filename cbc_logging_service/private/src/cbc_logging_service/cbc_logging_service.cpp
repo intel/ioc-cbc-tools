@@ -36,6 +36,11 @@ uint64_t abl_start_timestamp = 0;
 #define IOC_LOG_HEADER_SIZE (sizeof(uint8_t) + sizeof(uint8_t) + sizeof(uint8_t) + sizeof(uint32_t) + sizeof(uint8_t)*2)
 #define MAX_IOC_LOG_ARGUMENT_SIZE (IAS_CBC_MAX_SERVICE_FRAME_SIZE - IOC_LOG_HEADER_SIZE)
 
+#ifdef NDEBUG
+#define DEBUG_PRINT(fmt, args...)   /* Don't do anything in release builds */
+#else
+#define DEBUG_PRINT(fmt, args...)  fprintf(stderr, fmt, ##args)
+#endif
 
 struct pollfd pollTable[1];
 
@@ -523,13 +528,13 @@ void cbc_diagnostic_print_payload(uint8_t * buffer, size_t buflen)
   {
     for (size_t j = 0; i < buflen && j < 8; ++i, ++j)
     {
-      printf("%02x ", buffer[i]);
+      DEBUG_PRINT("%02x ", buffer[i]);
     }
-    printf("\n");
+    DEBUG_PRINT("\n");
   }
 }
 
-void cbc_parse_timestamp(uint8_t *buffer, char* file)
+int cbc_parse_timestamp(uint8_t *buffer, char* file)
 {
   uint64_t timestamp;
 
@@ -548,8 +553,17 @@ void cbc_parse_timestamp(uint8_t *buffer, char* file)
   if (file)
   {
     fp = fopen(file, "a+");
-    fprintf(fp, "BTMCBC %d %" PRIu64 "\n", reason_code, timestamp);
-    fclose(fp);
+    if (fp == NULL)
+    {
+      printf("file open failed\n");
+      fclose(fp);
+      return -1;
+    }
+    else 
+    {
+      fprintf(fp, "BTMCBC %d %" PRIu64 "\n", reason_code, timestamp);
+      fclose(fp);
+    }
   }
   
 }
@@ -602,7 +616,7 @@ int run_logging_service(CbcLoggingServiceControlOptions* options)
     {
       if (options->verbose_flag == 1)
       {
-        printf("diag received data sz  %zu\n", read_chars);
+        DEBUG_PRINT("diag received data sz  %zu\n", read_chars);
         cbc_diagnostic_print_payload(buffer, (size_t) (read_chars));
       }
 
