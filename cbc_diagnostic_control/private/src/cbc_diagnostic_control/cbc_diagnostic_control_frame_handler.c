@@ -256,7 +256,8 @@ int cbc_diagnostic_receive_answer(uint8_t verbose, uint8_t output_flags, uint8_t
   if (ret < 0)
   {
     printf("Failed to poll serial device:\n");
-    fclose(file);
+    if (file)
+      fclose(file);
     return -1;
   }
   else if (ret > 0)
@@ -308,7 +309,8 @@ int cbc_diagnostic_receive_answer(uint8_t verbose, uint8_t output_flags, uint8_t
     }
   }
 
-  fclose(file);
+  if (file)
+    fclose(file);
 
   return 0;
 }
