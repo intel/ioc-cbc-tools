@@ -163,7 +163,6 @@ void cbc_parse_timestamp(uint8_t *buffer, FILE* file)
 
 int cbc_diagnostic_send_request(uint8_t verbose, uint8_t output_selection, uint8_t boot_timestamps_flag)
 {
-  uint8_t const payload_size = 1u;
   uint8_t success = -1;
 
   if (verbose)
@@ -245,6 +244,11 @@ int cbc_diagnostic_receive_answer(uint8_t verbose, uint8_t output_flags, uint8_t
   if (boot_timestamps_flag == 2u)
   {
     file = fopen(log_file, "w");
+    if (file == NULL)
+    {
+	printf("log file opened error\n");
+	return -1;
+    }
   }
 
   int32_t ret = poll(pollTable, 2, poll_timeout);
@@ -252,6 +256,7 @@ int cbc_diagnostic_receive_answer(uint8_t verbose, uint8_t output_flags, uint8_t
   if (ret < 0)
   {
     printf("Failed to poll serial device:\n");
+    fclose(file);
     return -1;
   }
   else if (ret > 0)
@@ -302,6 +307,8 @@ int cbc_diagnostic_receive_answer(uint8_t verbose, uint8_t output_flags, uint8_t
       while (read_chars2 > 0);
     }
   }
+
+  fclose(file);
 
   return 0;
 }

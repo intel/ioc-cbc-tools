@@ -556,7 +556,6 @@ int cbc_parse_timestamp(uint8_t *buffer, char* file)
     if (fp == NULL)
     {
       printf("file open failed\n");
-      fclose(fp);
       return -1;
     }
     else 
@@ -565,7 +564,7 @@ int cbc_parse_timestamp(uint8_t *buffer, char* file)
       fclose(fp);
     }
   }
-  
+  return 0;
 }
 
 int parse_response(size_t buflen, uint8_t* buffer, char * file)

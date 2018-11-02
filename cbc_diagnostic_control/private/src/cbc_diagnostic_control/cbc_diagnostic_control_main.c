@@ -19,7 +19,6 @@ int main(int argc, char *argv[])
 {
   CbcDiagnosticControlOptions options;
 
-  int fd = 0;
   options.verbose_flag = 0;
   options.output_selection = eIasPrintFlagNone;
   options.boot_timestamps_flag = 0;
