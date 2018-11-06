@@ -336,8 +336,10 @@ void *cbc_heartbeat_loop(void)
 		case S_IOC_SHUTDOWN:
 			if (last_state == S_ACRND_SHUTDOWN) {
 				system_rc = system("shutdown 0");
+				while (1) sleep(1);
 			} else if (last_state == S_ACRND_REBOOT) {
 				system_rc = system("reboot");
+				while (1) sleep(1);
 			} else if (last_state == S_ACRND_SUSPEND) {
 				if (cbc_rtc_set) {
 					cbc_send_data(cbc_lifecycle_fd,
@@ -348,6 +350,9 @@ void *cbc_heartbeat_loop(void)
 			}
 			fprintf(stderr, "shutdown exec rc %d\n", system_rc);
 			state_transit(S_DEFAULT);// for s3 case
+			while (get_state() == S_DEFAULT && // already wakeup or
+				!system("systemctl list-jobs suspend.target | grep suspend")) //not in suspend process
+				sleep(1);
 			up_wakeup_reason = 0; // reset up wakeup reason
 			break;
 		default:
