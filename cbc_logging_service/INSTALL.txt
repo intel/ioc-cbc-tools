@@ -1,0 +1,4 @@
+Compiling logging tool
+--------------------
+1.Go to logging dir
+2.make DEBUG=0 or DEBUG=1 /*for release and debug builds */
