@@ -258,5 +258,5 @@ The thermal chart can be find in /run/log/cbc_thermal_chart-*.svg. It shows the 
 The default config has a trip point to reboot system while cbc_env_temp reach 100. We can trigger this trip point manually with debug interface.
 ```
 echo -n 0 > /run/cbc_thermal/auto_update
-echo -n 100 > /run/cbc_thermal/cbc_env_temp
+echo -n 100000 > /run/cbc_thermal/cbc_env_temp
 ```
