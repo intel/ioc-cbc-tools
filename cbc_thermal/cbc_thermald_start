@@ -5,6 +5,10 @@ if [ ! -e /etc/ioc-cbc-tools/thermal-conf.xml ]; then
 	cp /usr/share/ioc-cbc-tools/thermal-conf.xml /etc/ioc-cbc-tools/thermal-conf.xml
 fi
 
+if [ ! -e /sys/module/fuse ]; then
+    modprobe fuse
+fi
+
 /usr/bin/cbc_thermal &
 sleep 10
 /usr/bin/thermald --no-daemon --ignore-cpuid-check --ignore-default-control --config-file /etc/ioc-cbc-tools/thermal-conf.xml
