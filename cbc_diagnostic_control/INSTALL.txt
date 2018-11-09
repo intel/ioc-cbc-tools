@@ -1,0 +1,4 @@
+Compiling diagnostic tool
+---------------------
+1.Go to diagnostic directory
+2.make DEBUG=0 or DEBUG=1 /*For release and debug builds */
