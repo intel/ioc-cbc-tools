@@ -18,6 +18,7 @@
 #include <errno.h>
 #include <termios.h>
 #include <sys/ioctl.h>
+#include <sys/file.h>
 #include <fcntl.h>
 
 #include <sys/types.h>
@@ -44,6 +45,7 @@
 
 char const *const cDEFAULT_DEVICE_NAME = "/dev/ttyS1";
 char const *const cDEFAULT_MATCH_CONF = "/usr/share/ioc-cbc-tools/cbc_match.txt";
+char const *const cLOCK = "/var/run/cbc_attach.lock";
 
 static struct option longOpts[] = {
 	{"help", no_argument, 0, 'h'},
@@ -373,12 +375,24 @@ int main(int argc, char **argv)
 	/* Try to get the CBC device name from an environment variable. */
 	char const *envDeviceName = getenv("CBC_TTY");
 
+	int ret = 0;
+	/* Allow only one cbc_attach running */
+	int fd_lock = open(cLOCK, O_CREAT, S_IRWXU);
+
+	if (fd_lock <= 0) {
+		fprintf(stderr, "cannot open %s lock file\n", cLOCK);
+		ret = -1;
+		goto exit2;
+	}
+	int if_lock = flock(fd_lock, LOCK_EX|LOCK_NB);
+	if (if_lock) {
+		fprintf(stderr, "lock file %s was locked\n", cLOCK);
+		ret = -1;
+		goto exit1;
+	}
+
 	if (envDeviceName)
 		deviceName = envDeviceName;
-
-	/* Parse command line options. */
-	if (argc == 0)
-		return -1;
 
 	while (1) {
 		c = getopt_long(argc, argv, "hb:f", longOpts, &optionIndex);
@@ -388,7 +402,7 @@ int main(int argc, char **argv)
 		switch (c) {
 		case 'h':
 			printMainUsage();
-			return 0;
+			goto exit;
 
 		case 'b':
 			if (optarg != NULL) {
@@ -396,7 +410,8 @@ int main(int argc, char **argv)
 				if (baudrate == 0) {
 					printf("Unknown baudrate %s,exiting\n",
 								optarg);
-					return -1;
+					ret = -1;
+					goto exit;
 				}
 			}
 			break;
@@ -406,7 +421,8 @@ int main(int argc, char **argv)
 			break;
 
 		default:
-			return -1;
+			ret = -1;
+			goto exit;
 		}
 	}
 
@@ -438,5 +454,10 @@ int main(int argc, char **argv)
 		cbc_attach_shutdown(&deviceFd);
 	}
 
-	return 0;
+exit:
+	flock(fd_lock, LOCK_UN);
+exit1:
+	close(fd_lock);
+exit2:
+	return ret;
 }
