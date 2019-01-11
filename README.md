@@ -12,4 +12,4 @@ This package will provide the userspace systemd services to:
 The package could work on Native Linux, Guest Linux and also the
 Service OS Linux environment supported by ACRN.
 
-We track security related issues under https://github.com/intel/ioc-cbc-tools/issues/12.
+For all security issues please see https://01.org/security.
