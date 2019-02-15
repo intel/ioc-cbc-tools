@@ -1,13 +1,14 @@
 [Unit]
 Description=CBC thermald service
-Requisite=cbc_attach.service
-After=cbc_attach.service
+After=cbc_thermal_fuse.service
+Requires=cbc_thermal_fuse.service
 Conflicts=thermald.service
 
 [Service]
 Type=simple
 ExecStart=/usr/bin/bash -c "/usr/bin/cbc_thermald_start"
 Restart=no
+KillSignal=SIGKILL
 
 [Install]
 WantedBy=multi-user.target

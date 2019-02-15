@@ -1,0 +1,11 @@
+[Unit]
+Description=CBC thermal fuse service
+After=cbc_attach.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bash -c "if [ ! -e /sys/module/fuse ]; then modprobe fuse; fi && /usr/bin/cbc_thermal"
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
