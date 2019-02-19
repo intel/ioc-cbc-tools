@@ -1,0 +1,18 @@
+#!/bin/bash -e
+
+if [ "$1" = "pre" ]; then
+	if systemctl is-active --quiet cbc_thermald; then
+		/usr/bin/systemctl stop cbc_thermald
+		echo cbc_thermald is running, stop it for suspend | systemd-cat -p info
+		touch /run/cbc_thermald.active
+	else
+		echo cbc_thermald is in-active | systemd-cat -p info
+		rm -f /run/cbc_thermald.active
+	fi
+fi
+if [ "$1" = "post" ]; then
+	if [ -e /run/cbc_thermald.active ]; then
+		/usr/bin/systemctl start --no-block cbc_thermald
+		echo start cbc_thermald | systemd-cat -p info
+	fi
+fi
