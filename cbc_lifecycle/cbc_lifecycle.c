@@ -352,7 +352,7 @@ void *cbc_heartbeat_loop(void)
 			state_transit(S_DEFAULT);// for s3 case
 			while (get_state() == S_DEFAULT && // already wakeup or
 				!system("systemctl list-jobs suspend.target | grep suspend")) //not in suspend process
-				sleep(1);
+				usleep(10000);
 			up_wakeup_reason = 0; // reset up wakeup reason
 			break;
 		default:
