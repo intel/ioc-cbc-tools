@@ -1,6 +1,7 @@
 T := $(CURDIR)
 OUT_DIR ?= $(CURDIR)/build
 CFLAGS += -fstack-protector-strong -fPIE -fPIC -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security
+CFLAGS += -I$(CURDIR)
 LDFLAGS += -z noexecstack -z relro -z now -pie
 export CFLAGS
 export LDFLAGS
