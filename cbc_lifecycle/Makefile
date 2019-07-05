@@ -1,6 +1,8 @@
 
 OUT_DIR ?= .
 
+CFLAGS += -I/usr/include/acrn
+
 $(OUT_DIR)/cbc_lifecycle: cbc_lifecycle.c
 	gcc -o $@ $(CFLAGS) $(LDFLAGS) cbc_lifecycle.c -pthread -lacrn-mngr
 
